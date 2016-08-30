@@ -1,0 +1,11 @@
+﻿body {
+}
+/*Text Colors
+------------------------------------*/
+.color-red { color: #e74c3c;}
+
+.input-sshort {
+    max-width: 30%;
+}.input-xshort {
+    max-width: 10%;
+}

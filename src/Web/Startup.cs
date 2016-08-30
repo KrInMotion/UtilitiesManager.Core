@@ -67,6 +67,7 @@ namespace Web
 
             app.UseIdentity();
 
+            app.UseStatusCodePagesWithReExecute("/Home/ErrorStatus/{0}");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
