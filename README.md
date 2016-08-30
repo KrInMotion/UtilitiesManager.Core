@@ -1,0 +1,2 @@
+# UtilitiesManager.Core
+UtilitiesManager
