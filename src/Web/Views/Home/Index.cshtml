@@ -1,3 +1,50 @@
-﻿@{
+﻿@model IEnumerable<Web.ViewModels.Invoice.InvoiceListVM>
+@{
     ViewBag.Title = "Главная";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.Any())
+            {
+                <div>
+                    <table class="table table-condensed table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(x => x.InvoiceNum)</th>
+                                <th>@Html.DisplayNameFor(x => x.InvoiceTypeName)</th>
+                                <th>@Html.DisplayNameFor(x => x.InvoiceProviderName)</th>
+                                <th>@Html.DisplayNameFor(x => x.InvoiceDate)</th>
+                                <th>@Html.DisplayNameFor(x => x.InvoiceSum)</th>
+                                <th>@Html.DisplayNameFor(x => x.PaymentSum)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.InvoiceNum</td>
+                                    <td>@item.InvoiceTypeName</td>
+                                    <td>@item.InvoiceProviderName</td>
+                                    <td>@item.InvoiceDate</td>
+                                    <td>@item.InvoiceSum</td>
+                                    <td>@item.PaymentSum</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            }
+            else
+            {
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="text-center">
+                        <strong>Ура. Счетов нет!</strong>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

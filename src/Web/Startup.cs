@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Web.Data.Entities;
+using Web.Data.Repositories;
 
 namespace Web
 {
@@ -44,7 +45,8 @@ namespace Web
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
-
+            services.AddScoped<IInvoiceTypeRepository, InvoiceTypeRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
