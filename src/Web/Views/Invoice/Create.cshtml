@@ -1,0 +1,52 @@
+﻿@model Web.ViewModels.Invoice.InvoiceFormVM
+@{
+    ViewBag.Title = "Новый документ";
+}
+<div class="container">
+    <div class="page-header">
+        <h3>Новый документ</h3>
+    </div>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index">Главная</a></li>
+        <li><a asp-controller="Invoice" asp-action="Index">Все документы</a></li>
+        <li class="active">Новый документ</li>
+    </ol>
+    <div class="panel panel-success">
+        <div class="panel-body">
+            <form asp-controller="Invoice" asp-action="Create" method="post" role="form" class="form-horizontal">
+                <fieldset>
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        <label asp-for="InvoiceNum" class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="InvoiceNum" class="form-control input-sshort" />
+                            <span asp-validation-for="InvoiceNum" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account" class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="Account" class="form-control input-sshort" />
+                            <span asp-validation-for="Account" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="InvoiceTypeId" class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9">
+                            <select asp-for="InvoiceTypeId" asp-items="@Model.InvoiceTypeList" class="form-control"></select>
+                            <span asp-validation-for="InvoiceTypeId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <hr />
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Создать</button>
+                        <button type="button" class="btn btn-danger" onclick="history.go(-1);"><i class="fa fa-trash"></i> Отмена</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

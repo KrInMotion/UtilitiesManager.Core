@@ -36,7 +36,7 @@ namespace Web.Data.Repositories
 
         public IEnumerable<InvoiceType> GetInvoiceTypes()
         {
-            throw new NotImplementedException();
+            return _context.InvoiceTypes.ToList();
         }
 
         public IEnumerable<InvoiceType> GetInvoiceTypesByName(string name)

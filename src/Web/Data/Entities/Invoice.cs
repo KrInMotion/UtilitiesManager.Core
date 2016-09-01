@@ -9,6 +9,7 @@ namespace Web.Data.Entities
     {
         public int Id { get; set; }
         public string InvoiceNum { get; set; }
+        public string Account { get; set; }
         public int InvoiceTypeId { get; set; }
         public virtual InvoiceType InvoiceType { get; set; }
         public int InvoiceProviderId { get; set; }
