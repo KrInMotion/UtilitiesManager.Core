@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Web.ViewModels.Invoice;
 using Web.Data.Repositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Web.Data.Entities;
 
 namespace Web.Controllers
 {
@@ -28,7 +29,7 @@ namespace Web.Controllers
         protected void PrepareInvoiceModel(InvoiceFormVM model)
         {
             model.MonthId = DateTime.Now.Month;
-            model.Year = DateTime.Now.Year;
+            model.InvoiceYear = DateTime.Now.Year;
             foreach (var item in _invoiceTypeRep.GetAll())
             {
                 model.InvoiceTypeList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.InvoiceTypeName });
@@ -56,6 +57,28 @@ namespace Web.Controllers
             var model = new InvoiceFormVM();
             PrepareInvoiceModel(model);
 
+            return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Create(InvoiceFormVM model)
+        {
+            if(ModelState.IsValid)
+            {
+                var entity = new Invoice
+                {
+                    InvoiceNum = model.InvoiceNum,
+                    Account = model.Account,
+                    InvoiceTypeId = model.InvoiceTypeId,
+                    InvoiceProviderId = model.InvoiceProviderId,
+                    MonthId = model.MonthId,
+                    InvoiceYear = model.InvoiceYear,
+                    CreatedAt = DateTime.Now
+                };
+                _invoiceRep.CreateInvoice(entity);
+                _invoiceRep.Commit();
+                RedirectToAction("Index");
+            }
             return View(model);
         }
     }

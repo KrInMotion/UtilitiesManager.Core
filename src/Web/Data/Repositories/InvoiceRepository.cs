@@ -11,6 +11,7 @@ namespace Web.Data.Repositories
     {
         IEnumerable<Invoice> GetLastInvoces();
         bool Commit();
+        void CreateInvoice(Invoice entity);
     }
 
     public class InvoiceRepository : IInvoiceRepository
@@ -24,7 +25,12 @@ namespace Web.Data.Repositories
         }
         public bool Commit()
         {
-            throw new NotImplementedException();
+            return _context.SaveChanges()>0;
+        }
+
+        public void CreateInvoice(Invoice entity)
+        {
+            _context.Invoices.Add(entity);
         }
 
         public IEnumerable<Invoice> GetLastInvoces()

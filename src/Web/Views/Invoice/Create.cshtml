@@ -52,10 +52,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Year" class="col-sm-3 control-label"></label>
+                        <label asp-for="InvoiceYear" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
-                            <input asp-for="Year" class="form-control input-sshort" />
-                            <span asp-validation-for="Year" class="text-danger"></span>
+                            <input asp-for="InvoiceYear" class="form-control input-sshort" />
+                            <span asp-validation-for="InvoiceYear" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="InvoiceSum" class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9">
+                            <input asp-for="InvoiceSum" class="form-control input-sshort" />
+                            <span asp-validation-for="InvoiceSum" class="text-danger"></span>
                         </div>
                     </div>
                 </fieldset>

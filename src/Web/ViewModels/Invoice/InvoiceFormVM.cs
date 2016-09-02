@@ -28,7 +28,11 @@ namespace Web.ViewModels.Invoice
         public int MonthId { get; set; }
         [Display(Name = "Расчетный год"), Required(ErrorMessage = "{0} - обязательное поле")] 
         [Range(1980, 2100, ErrorMessage = "Расчетный год должет быть в диапазоне {1} - {2}")]
-        public int Year { get; set; }
+        public int InvoiceYear { get; set; }
+        [Display(Name = "Сумма к оплате"), Required(ErrorMessage = "{0} - обязательное поле")]
+        [DataType(DataType.Currency, ErrorMessage ="Значение должно быть числом")]
+        public double InvoiceSum { get; set; }
+
         public List<SelectListItem> InvoiceTypeList { get; set; }
         public List<SelectListItem> InvoiceProviderList { get; set; }
         public List<SelectListItem> MonthList { get; set; }
