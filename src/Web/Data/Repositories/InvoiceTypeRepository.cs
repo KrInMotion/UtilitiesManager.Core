@@ -8,7 +8,7 @@ namespace Web.Data.Repositories
 {
     public interface IInvoiceTypeRepository
     {
-        IEnumerable<InvoiceType> GetInvoiceTypes();
+        IEnumerable<InvoiceType> GetAll();
         IEnumerable<InvoiceType> GetInvoiceTypesByName(string name);
         InvoiceType GetInvoiceType(int id);
         bool Commit();
@@ -34,7 +34,7 @@ namespace Web.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<InvoiceType> GetInvoiceTypes()
+        public IEnumerable<InvoiceType> GetAll()
         {
             return _context.InvoiceTypes.ToList();
         }

@@ -46,6 +46,8 @@ namespace Web
 
             services.AddMvc();
             services.AddScoped<IInvoiceTypeRepository, InvoiceTypeRepository>();
+            services.AddScoped<IInvoiceProviderRepository, InvoiceProviderRepository>();
+            services.AddScoped<IMonthRepository, MonthRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
         }
 
