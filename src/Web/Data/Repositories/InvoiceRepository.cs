@@ -10,6 +10,8 @@ namespace Web.Data.Repositories
     public interface IInvoiceRepository
     {
         IEnumerable<Invoice> GetLastInvoces();
+        IEnumerable<Invoice> GetAll();
+
         bool Commit();
         void CreateInvoice(Invoice entity);
     }
@@ -31,6 +33,15 @@ namespace Web.Data.Repositories
         public void CreateInvoice(Invoice entity)
         {
             _context.Invoices.Add(entity);
+        }
+
+        public IEnumerable<Invoice> GetAll()
+        {
+            return _context.Invoices
+                .Include(x => x.Month)
+                .Include(x => x.InvoiceType)
+                .Include(x => x.InvoiceProvider)
+                .ToList();
         }
 
         public IEnumerable<Invoice> GetLastInvoces()

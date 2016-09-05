@@ -12,6 +12,10 @@ using Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Web.Data.Entities;
 using Web.Data.Repositories;
+using Newtonsoft.Json.Serialization;
+using AutoMapper;
+using Web.ViewModels.InvoiceProvider;
+using Web.ViewModels;
 
 namespace Web
 {
@@ -44,7 +48,8 @@ namespace Web
                 .AddEntityFrameworkStores<UtilitiesDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
+            services.AddMvc()
+                .AddJsonOptions(config=>config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
             services.AddScoped<IInvoiceTypeRepository, InvoiceTypeRepository>();
             services.AddScoped<IInvoiceProviderRepository, InvoiceProviderRepository>();
             services.AddScoped<IMonthRepository, MonthRepository>();
@@ -78,6 +83,7 @@ namespace Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            Mapping.Initialize();
         }
     }
 }
