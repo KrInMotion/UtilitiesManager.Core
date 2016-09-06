@@ -33,7 +33,7 @@ namespace Web.Data.Repositories
         public void CreateInvoice(Invoice entity)
         {
             _context.Invoices.Add(entity);
-        }
+            }
 
         public IEnumerable<Invoice> GetAll()
         {

@@ -84,6 +84,7 @@ namespace Web
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             Mapping.Initialize();
+            SeedData.Seed(app.ApplicationServices).Wait();
         }
     }
 }

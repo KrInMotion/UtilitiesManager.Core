@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Web.Data.Repositories;
 using Web.ViewModels.Invoice;
+using AutoMapper;
+using Web.Data.Entities;
 
 namespace Web.Controllers
 {
@@ -20,20 +22,7 @@ namespace Web.Controllers
         public IActionResult Index()
         {
             var entity = _invoiceRep.GetLastInvoces();
-            var model = new List<InvoiceListVM>();
-            foreach (var item in entity)
-            {
-                model.Add(new InvoiceListVM
-                {
-                    Id = item.Id,
-                    InvoiceNum = item.InvoiceNum,
-                    InvoiceProviderName = item.InvoiceProvider.InvoiceProviderName,
-                    InvoiceTypeName = item.InvoiceType.InvoiceTypeName,
-                    InvoiceDate = $"{item.Month.MonthName} {item.InvoiceYear.ToString()}",
-                    InvoiceSum = item.InvoiceSum,
-                    PaymentSum = item.PaymentSum
-                });
-            }
+            var model = Mapper.Map<IEnumerable<Invoice>, IEnumerable<InvoiceListVM>>(entity);
             return View(model);
         }
         

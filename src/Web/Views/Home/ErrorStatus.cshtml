@@ -35,5 +35,5 @@
         <h1><span aria-hidden="true" class="@ViewData["Icon"]"></span> @ViewData["Title"]</h1>
     </header>
     <p>@ViewData["Description"]</p>
-    <a class="btn btn-primary btn-lg" href="@Url.RouteUrl("/")"><span aria-hidden="true" class="fa fa-home"></span> Site Home</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg" ><span aria-hidden="true" class="fa fa-home"></span> На главную страницу</a>
 </div>

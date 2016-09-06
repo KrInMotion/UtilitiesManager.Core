@@ -7,6 +7,7 @@ using Web.ViewModels.Invoice;
 using Web.Data.Repositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Web.Data.Entities;
+using AutoMapper;
 
 namespace Web.Controllers
 {
@@ -65,16 +66,7 @@ namespace Web.Controllers
         {
             if(ModelState.IsValid)
             {
-                var entity = new Invoice
-                {
-                    InvoiceNum = model.InvoiceNum,
-                    Account = model.Account,
-                    InvoiceTypeId = model.InvoiceTypeId,
-                    InvoiceProviderId = model.InvoiceProviderId,
-                    MonthId = model.MonthId,
-                    InvoiceYear = model.InvoiceYear,
-                    CreatedAt = DateTime.Now
-                };
+                var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
                 _invoiceRep.CreateInvoice(entity);
                 _invoiceRep.Commit();
                 RedirectToAction("Index");
