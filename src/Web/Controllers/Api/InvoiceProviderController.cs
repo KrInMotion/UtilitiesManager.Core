@@ -7,16 +7,19 @@ using Web.Data.Entities;
 using Web.Data.Repositories;
 using Web.ViewModels.InvoiceProvider;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 
 namespace Web.Controllers.Api
 {
     public class InvoiceProviderController : Controller
     {
         private readonly IInvoiceProviderRepository _invoiceProviderRep;
+        private readonly ILogger<InvoiceProviderController> _logger;
 
-        public InvoiceProviderController(IInvoiceProviderRepository invoiceProviderRep)
+        public InvoiceProviderController(IInvoiceProviderRepository invoiceProviderRep, ILogger<InvoiceProviderController> logger)
         {
             _invoiceProviderRep = invoiceProviderRep;
+            _logger = logger;
         }
 
         [HttpGet("api/invoiceProviders")]
@@ -29,10 +32,19 @@ namespace Web.Controllers.Api
         [HttpPost("api/invoiceProviders")]
         public IActionResult Post([FromBody] InvoiceProviderVM model)
         {
-            if(ModelState.IsValid)
+            try
             {
-                var entity = Mapper.Map<InvoiceProvider>(model);
-                return Created("", Mapper.Map<InvoiceProviderVM>(entity));
+                if (ModelState.IsValid)
+                {
+                    var entity = Mapper.Map<InvoiceProvider>(model);
+                    _invoiceProviderRep.Create(entity);
+                    _invoiceProviderRep.Commit();
+                    return Created("", Mapper.Map<InvoiceProviderVM>(entity));
+                }
+            } catch (Exception ex)
+            {
+                _logger.LogError($"Failed to post invoice provider {ex.Message}");
+                return BadRequest(ex.Message);
             }
             return BadRequest(ModelState);
         }

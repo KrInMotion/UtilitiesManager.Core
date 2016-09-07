@@ -10,6 +10,7 @@ namespace Web.Data.Repositories
     {
         IEnumerable<InvoiceProvider> GetAll();
         bool Commit();
+        void Create(InvoiceProvider entity);
     }
 
     public class InvoiceProviderRepository : IInvoiceProviderRepository
@@ -23,7 +24,12 @@ namespace Web.Data.Repositories
         }
         public bool Commit()
         {
-            throw new NotImplementedException();
+            return _context.SaveChanges() > 0;
+        }
+
+        public void Create(InvoiceProvider entity)
+        {
+            _context.InvoiceProviders.Add(entity);
         }
 
         public IEnumerable<InvoiceProvider> GetAll()
