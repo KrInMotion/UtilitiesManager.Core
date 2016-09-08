@@ -10,24 +10,24 @@ namespace Web.Controllers.Api
 {
     public class InvoiceController : Controller
     {
-        private readonly IMonthRepository _monthRep;
-        private readonly IInvoiceRepository _invoiceRep;
-        private readonly IInvoiceTypeRepository _invoiceTypeRep;
-        private readonly IInvoiceProviderRepository _invoiceProviderRep;
+        private readonly IMonthRepository _monthRepository;
+        private readonly IInvoiceRepository _invoiceRepository;
+        private readonly IKindRepository _kindRepository;
+        private readonly IProviderRepository _providerRepository;
 
-        public InvoiceController(IInvoiceRepository invoiceRep, IInvoiceTypeRepository invoiceTypeRep,
-            IInvoiceProviderRepository invoiceProviderRep, IMonthRepository monthRep)
+        public InvoiceController(IInvoiceRepository invoiceRepository, IKindRepository kindRepository,
+            IProviderRepository providerRepository, IMonthRepository monthRepository)
         {
-            _invoiceRep = invoiceRep;
-            _invoiceTypeRep = invoiceTypeRep;
-            _invoiceProviderRep = invoiceProviderRep;
-            _monthRep = monthRep;
+            _invoiceRepository = invoiceRepository;
+            _kindRepository = kindRepository;
+            _providerRepository = providerRepository;
+            _monthRepository = monthRepository;
         }
 
         [HttpGet("api/invoices")]
         public IActionResult Get()
         {
-            var entity = _invoiceRep.GetAll();
+            var entity = _invoiceRepository.GetAll();
             return Ok(entity);
         }
     }

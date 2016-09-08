@@ -13,7 +13,7 @@ namespace Web.Data.Repositories
         IEnumerable<Invoice> GetAll();
 
         bool Commit();
-        void CreateInvoice(Invoice entity);
+        void Create(Invoice entity);
     }
 
     public class InvoiceRepository : IInvoiceRepository
@@ -30,7 +30,7 @@ namespace Web.Data.Repositories
             return _context.SaveChanges()>0;
         }
 
-        public void CreateInvoice(Invoice entity)
+        public void Create(Invoice entity)
         {
             _context.Invoices.Add(entity);
             }
@@ -39,8 +39,8 @@ namespace Web.Data.Repositories
         {
             return _context.Invoices
                 .Include(x => x.Month)
-                .Include(x => x.InvoiceType)
-                .Include(x => x.InvoiceProvider)
+                .Include(x => x.Kind)
+                .Include(x => x.Provider)
                 .ToList();
         }
 
@@ -48,8 +48,8 @@ namespace Web.Data.Repositories
         {
             return _context.Invoices
                 .Include(x=>x.Month)
-                .Include(x=>x.InvoiceType)
-                .Include(x=>x.InvoiceProvider)
+                .Include(x=>x.Kind)
+                .Include(x=>x.Provider)
                 .OrderBy(x => x.CreatedAt)
                 .Take(20);
         }

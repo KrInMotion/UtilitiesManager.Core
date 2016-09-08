@@ -8,12 +8,12 @@ using Web.Data.Entities;
 
 namespace Web.Data
 {
-    public class UtilitiesDbContext:IdentityDbContext<AppUser, AppRole, string>
+    public class UtilitiesDbContext: IdentityDbContext<AppUser, AppRole, string>
     {
         public UtilitiesDbContext(DbContextOptions<UtilitiesDbContext> options) : base(options) { }
 
-        public DbSet<InvoiceProvider> InvoiceProviders { get; set; }
-        public DbSet<InvoiceType> InvoiceTypes { get; set; }
+        public DbSet<Provider> Providers { get; set; }
+        public DbSet<Kind> Kinds { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Month> Months { get; set; }
 

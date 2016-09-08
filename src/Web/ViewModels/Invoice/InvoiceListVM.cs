@@ -10,15 +10,15 @@ namespace Web.ViewModels.Invoice
     {
         public int Id { get; set; }
         [Display(Name ="№ квитанции")]
-        public string InvoiceNum { get; set; }
+        public string Number { get; set; }
         [Display(Name = "Тип квитанции")]
-        public string InvoiceTypeName { get; set; }
+        public string KindName { get; set; }
         [Display(Name = "Поставщик")]
-        public string InvoiceProviderName { get; set; }
+        public string ProviderName { get; set; }
         [Display(Name = "За период")]
         public string InvoiceDate { get; set; }
         [Display(Name = "Сумма к оплате")]
-        public double InvoiceSum { get; set; }
+        public double Sum { get; set; }
         [Display(Name = "Оплачено")]
         public double? PaymentSum { get; set; }
     }

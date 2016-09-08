@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Web.Data.Entities
 {
-    public class InvoiceProvider
+    public class Kind
     {
         public int Id { get; set; }
-        public string InvoiceProviderName { get; set; }
+        public string KindName { get; set; }
     }
 }

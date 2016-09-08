@@ -17,10 +17,10 @@
                 <fieldset>
                     <div asp-validation-summary="ModelOnly"></div>
                     <div class="form-group">
-                        <label asp-for="InvoiceNum" class="col-sm-3 control-label"></label>
+                        <label asp-for="Number" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
-                            <input asp-for="InvoiceNum" class="form-control input-sshort" />
-                            <span asp-validation-for="InvoiceNum" class="text-danger"></span>
+                            <input asp-for="Number" class="form-control input-sshort" />
+                            <span asp-validation-for="Number" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -31,17 +31,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="InvoiceTypeId" class="col-sm-3 control-label"></label>
+                        <label asp-for="KindId" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
-                            <select asp-for="InvoiceTypeId" asp-items="@Model.InvoiceTypeList" class="form-control"></select>
-                            <span asp-validation-for="InvoiceTypeId" class="text-danger"></span>
+                            <select asp-for="KindId" asp-items="@Model.KindList" class="form-control"></select>
+                            <span asp-validation-for="KindId" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="InvoiceProviderId" class="col-sm-3 control-label"></label>
+                        <label asp-for="ProviderId" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
-                            <select asp-for="InvoiceProviderId" asp-items="@Model.InvoiceProviderList" class="form-control"></select>
-                            <span asp-validation-for="InvoiceProviderId" class="text-danger"></span>
+                            <select asp-for="ProviderId" asp-items="@Model.ProviderList" class="form-control"></select>
+                            <span asp-validation-for="ProviderId" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -52,17 +52,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="InvoiceYear" class="col-sm-3 control-label"></label>
+                        <label asp-for="Year" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
-                            <input asp-for="InvoiceYear" class="form-control input-sshort" />
-                            <span asp-validation-for="InvoiceYear" class="text-danger"></span>
+                            <input asp-for="Year" class="form-control input-sshort" />
+                            <span asp-validation-for="Year" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="InvoiceSum" class="col-sm-3 control-label"></label>
+                        <label asp-for="Sum" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
-                            <input asp-for="InvoiceSum" class="form-control input-sshort" />
-                            <span asp-validation-for="InvoiceSum" class="text-danger"></span>
+                            <input asp-for="Sum" class="form-control input-sshort" />
+                            <span asp-validation-for="Sum" class="text-danger"></span>
                         </div>
                     </div>
                 </fieldset>

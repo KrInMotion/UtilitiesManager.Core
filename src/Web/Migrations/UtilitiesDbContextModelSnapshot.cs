@@ -183,57 +183,45 @@ namespace Web.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<string>("InvoiceNum");
-
-                    b.Property<int>("InvoiceProviderId");
-
-                    b.Property<double>("InvoiceSum");
-
-                    b.Property<int>("InvoiceTypeId");
-
-                    b.Property<int>("InvoiceYear");
+                    b.Property<int>("KindId");
 
                     b.Property<int>("MonthId");
+
+                    b.Property<string>("Number");
 
                     b.Property<DateTime?>("PaymentDate");
 
                     b.Property<double?>("PaymentSum");
 
+                    b.Property<int>("ProviderId");
+
+                    b.Property<double>("Sum");
+
                     b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("Year");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InvoiceProviderId");
-
-                    b.HasIndex("InvoiceTypeId");
+                    b.HasIndex("KindId");
 
                     b.HasIndex("MonthId");
+
+                    b.HasIndex("ProviderId");
 
                     b.ToTable("Invoices");
                 });
 
-            modelBuilder.Entity("Web.Data.Entities.InvoiceProvider", b =>
+            modelBuilder.Entity("Web.Data.Entities.Kind", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("InvoiceProviderName");
+                    b.Property<string>("KindName");
 
                     b.HasKey("Id");
 
-                    b.ToTable("InvoiceProviders");
-                });
-
-            modelBuilder.Entity("Web.Data.Entities.InvoiceType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("InvoiceTypeName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("InvoiceTypes");
+                    b.ToTable("Kinds");
                 });
 
             modelBuilder.Entity("Web.Data.Entities.Month", b =>
@@ -246,6 +234,18 @@ namespace Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Months");
+                });
+
+            modelBuilder.Entity("Web.Data.Entities.Provider", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ProviderName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Providers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -287,19 +287,19 @@ namespace Web.Migrations
 
             modelBuilder.Entity("Web.Data.Entities.Invoice", b =>
                 {
-                    b.HasOne("Web.Data.Entities.InvoiceProvider", "InvoiceProvider")
+                    b.HasOne("Web.Data.Entities.Kind", "Kind")
                         .WithMany()
-                        .HasForeignKey("InvoiceProviderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Web.Data.Entities.InvoiceType", "InvoiceType")
-                        .WithMany()
-                        .HasForeignKey("InvoiceTypeId")
+                        .HasForeignKey("KindId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Web.Data.Entities.Month", "Month")
                         .WithMany()
                         .HasForeignKey("MonthId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Web.Data.Entities.Provider", "Provider")
+                        .WithMany()
+                        .HasForeignKey("ProviderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

@@ -12,16 +12,16 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IInvoiceRepository _invoiceRep;
-        public HomeController(IInvoiceRepository invoiceRep)
+        private readonly IInvoiceRepository _invoiceRepository;
+        public HomeController(IInvoiceRepository invoiceRepository)
         {
-            _invoiceRep = invoiceRep;
+            _invoiceRepository = invoiceRepository;
         }
 
         // GET:/Home/Index
         public IActionResult Index()
         {
-            var entity = _invoiceRep.GetLastInvoces();
+            var entity = _invoiceRepository.GetLastInvoces();
             var model = Mapper.Map<IEnumerable<Invoice>, IEnumerable<InvoiceListVM>>(entity);
             return View(model);
         }

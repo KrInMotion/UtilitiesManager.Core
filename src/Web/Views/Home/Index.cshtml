@@ -19,11 +19,11 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>@Html.DisplayNameFor(x => x.InvoiceNum)</th>
-                                <th>@Html.DisplayNameFor(x => x.InvoiceTypeName)</th>
-                                <th>@Html.DisplayNameFor(x => x.InvoiceProviderName)</th>
+                                <th>@Html.DisplayNameFor(x => x.Number)</th>
+                                <th>@Html.DisplayNameFor(x => x.KindName)</th>
+                                <th>@Html.DisplayNameFor(x => x.ProviderName)</th>
                                 <th>@Html.DisplayNameFor(x => x.InvoiceDate)</th>
-                                <th>@Html.DisplayNameFor(x => x.InvoiceSum)</th>
+                                <th>@Html.DisplayNameFor(x => x.Sum)</th>
                                 <th>@Html.DisplayNameFor(x => x.PaymentSum)</th>
                             </tr>
                         </thead>
@@ -31,11 +31,11 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.InvoiceNum</td>
-                                    <td>@item.InvoiceTypeName</td>
-                                    <td>@item.InvoiceProviderName</td>
+                                    <td>@item.Number</td>
+                                    <td>@item.KindName</td>
+                                    <td>@item.ProviderName</td>
                                     <td>@item.InvoiceDate</td>
-                                    <td>@item.InvoiceSum</td>
+                                    <td>@item.Sum</td>
                                     <td>@item.PaymentSum</td>
                                 </tr>
                             }

@@ -13,33 +13,33 @@ namespace Web.Controllers
 {
     public class InvoiceController : Controller
     {
-        private readonly IMonthRepository _monthRep;
-        private readonly IInvoiceRepository _invoiceRep;
-        private readonly IInvoiceTypeRepository _invoiceTypeRep;
-        private readonly IInvoiceProviderRepository _invoiceProviderRep;
-        public InvoiceController(IInvoiceRepository invoiceRep, IInvoiceTypeRepository invoiceTypeRep, 
-            IInvoiceProviderRepository invoiceProviderRep, IMonthRepository monthRep)
+        private readonly IMonthRepository _monthRepository;
+        private readonly IInvoiceRepository _invoiceRepository;
+        private readonly IKindRepository _kindRepository;
+        private readonly IProviderRepository _providerRepository;
+        public InvoiceController(IInvoiceRepository invoiceRepository, IKindRepository kindRepostory, 
+            IProviderRepository providerRepository, IMonthRepository monthRepository)
         {
-            _invoiceRep = invoiceRep;
-            _invoiceTypeRep = invoiceTypeRep;
-            _invoiceProviderRep = invoiceProviderRep;
-            _monthRep = monthRep;
+            _invoiceRepository = invoiceRepository;
+            _kindRepository = kindRepostory;
+            _providerRepository = providerRepository;
+            _monthRepository = monthRepository;
         }
 
         [NonAction]
         protected void PrepareInvoiceModel(InvoiceFormVM model)
         {
             model.MonthId = DateTime.Now.Month;
-            model.InvoiceYear = DateTime.Now.Year;
-            foreach (var item in _invoiceTypeRep.GetAll())
+            model.Year = DateTime.Now.Year;
+            foreach (var item in _kindRepository.GetAll())
             {
-                model.InvoiceTypeList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.InvoiceTypeName });
+                model.KindList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.KindName });
             }
-            foreach (var item in _invoiceProviderRep.GetAll())
+            foreach (var item in _providerRepository.GetAll())
             {
-                model.InvoiceProviderList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.InvoiceProviderName });
+                model.ProviderList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.ProviderName });
             }
-            foreach (var item in _monthRep.GetAll())
+            foreach (var item in _monthRepository.GetAll())
             {
                 model.MonthList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.MonthName });
             }
@@ -67,8 +67,8 @@ namespace Web.Controllers
             if(ModelState.IsValid)
             {
                 var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
-                _invoiceRep.CreateInvoice(entity);
-                _invoiceRep.Commit();
+                _invoiceRepository.Create(entity);
+                _invoiceRepository.Commit();
                 RedirectToAction("Index");
             }
             return View(model);

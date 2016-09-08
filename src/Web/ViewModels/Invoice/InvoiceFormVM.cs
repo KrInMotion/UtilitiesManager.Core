@@ -11,30 +11,30 @@ namespace Web.ViewModels.Invoice
     {
         public InvoiceFormVM()
         {
-            InvoiceTypeList = new List<SelectListItem>();
-            InvoiceProviderList = new List<SelectListItem>();
+            KindList = new List<SelectListItem>();
+            ProviderList = new List<SelectListItem>();
             MonthList = new List<SelectListItem>();
         }
         public int Id { get; set; }
         [Display(Name ="Номер документа")]
-        public string InvoiceNum { get; set; }
+        public string Number { get; set; }
         [Display(Name = "Лицевой счет"), MaxLength(100)]
         public string Account { get; set; }
         [Display(Name = "Тип документа"), Required(ErrorMessage = "{0} - обязательное поле")]
-        public int InvoiceTypeId { get; set; }
+        public int KindId { get; set; }
         [Display(Name = "Поставщик услуги"), Required(ErrorMessage = "{0} - обязательное поле")]
-        public int InvoiceProviderId { get; set; }
+        public int ProviderId { get; set; }
         [Display(Name = "Расчетный месяц"), Required(ErrorMessage = "{0} - обязательное поле")]
         public int MonthId { get; set; }
         [Display(Name = "Расчетный год"), Required(ErrorMessage = "{0} - обязательное поле")] 
         [Range(1980, 2100, ErrorMessage = "Расчетный год должет быть в диапазоне {1} - {2}")]
-        public int InvoiceYear { get; set; }
+        public int Year { get; set; }
         [Display(Name = "Сумма к оплате"), Required(ErrorMessage = "{0} - обязательное поле")]
         [DataType(DataType.Currency, ErrorMessage ="Значение должно быть числом")]
-        public double InvoiceSum { get; set; }
+        public double Sum { get; set; }
 
-        public List<SelectListItem> InvoiceTypeList { get; set; }
-        public List<SelectListItem> InvoiceProviderList { get; set; }
+        public List<SelectListItem> KindList { get; set; }
+        public List<SelectListItem> ProviderList { get; set; }
         public List<SelectListItem> MonthList { get; set; }
     }
 }

@@ -14,7 +14,7 @@ using Web.Data.Entities;
 using Web.Data.Repositories;
 using Newtonsoft.Json.Serialization;
 using AutoMapper;
-using Web.ViewModels.InvoiceProvider;
+using Web.ViewModels.Provider;
 using Web.ViewModels;
 
 namespace Web
@@ -50,8 +50,8 @@ namespace Web
 
             services.AddMvc()
                 .AddJsonOptions(config=>config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
-            services.AddScoped<IInvoiceTypeRepository, InvoiceTypeRepository>();
-            services.AddScoped<IInvoiceProviderRepository, InvoiceProviderRepository>();
+            services.AddScoped<IKindRepository, KindRepository>();
+            services.AddScoped<IProviderRepository, ProviderRepository>();
             services.AddScoped<IMonthRepository, MonthRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
         }
