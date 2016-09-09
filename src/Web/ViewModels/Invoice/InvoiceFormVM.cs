@@ -32,6 +32,17 @@ namespace Web.ViewModels.Invoice
         [Display(Name = "Сумма к оплате"), Required(ErrorMessage = "{0} - обязательное поле")]
         [DataType(DataType.Currency, ErrorMessage ="Значение должно быть числом")]
         public double Sum { get; set; }
+        [Display(Name = "Сумма задолженности")]
+        [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
+        public double? Debt { get; set; }
+        [Display(Name = "Пеня")]
+        [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
+        public double? Penalty { get; set; }
+        [Display(Name = "Сумма оплаты")]
+        [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
+        public double? PaymentSum { get; set; }
+        [Display(Name = "Сумма оплаты"), DataType(DataType.Text)]
+        public DateTime? PaymentDate { get; set; }
 
         public List<SelectListItem> KindList { get; set; }
         public List<SelectListItem> ProviderList { get; set; }

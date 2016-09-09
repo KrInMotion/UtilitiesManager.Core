@@ -29,8 +29,6 @@ namespace Web.Controllers
         [NonAction]
         protected void PrepareInvoiceModel(InvoiceFormVM model)
         {
-            model.MonthId = DateTime.Now.Month;
-            model.Year = DateTime.Now.Year;
             foreach (var item in _kindRepository.GetAll())
             {
                 model.KindList.Add(new SelectListItem { Value = item.Id.ToString(), Text = item.KindName });
@@ -52,15 +50,19 @@ namespace Web.Controllers
             return View();
         }
 
+        //GET: /Invoice/Create
         [HttpGet]
         public IActionResult Create()
         {
             var model = new InvoiceFormVM();
+            model.MonthId = DateTime.Now.Month;
+            model.Year = DateTime.Now.Year;
             PrepareInvoiceModel(model);
 
             return View(model);
         }
 
+        //POST: /Invoice/Create
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create(InvoiceFormVM model)
         {
