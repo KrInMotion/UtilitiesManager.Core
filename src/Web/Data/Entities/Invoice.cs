@@ -18,6 +18,8 @@ namespace Web.Data.Entities
         public virtual Month Month { get; set; }
         public int Year { get; set; }
         public double Sum { get; set; }
+        public double? Debt { get; set; }
+        public double? Penalty { get; set; }
         public double? PaymentSum { get; set; }
         public DateTime? PaymentDate { get; set; }
         public DateTime CreatedAt { get; set; }

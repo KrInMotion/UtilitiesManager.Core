@@ -183,6 +183,8 @@ namespace Web.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<double?>("Debt");
+
                     b.Property<int>("KindId");
 
                     b.Property<int>("MonthId");
@@ -192,6 +194,8 @@ namespace Web.Migrations
                     b.Property<DateTime?>("PaymentDate");
 
                     b.Property<double?>("PaymentSum");
+
+                    b.Property<double?>("Penalty");
 
                     b.Property<int>("ProviderId");
 
