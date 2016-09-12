@@ -51,11 +51,19 @@ SET IDENTITY_INSERT [dbo].[Kinds] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Invoices] ON
 GO
-INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) VALUES(1, N'1234-F56', N'71', 1, 1, 3, 2016, 164.4, CONVERT(VARCHAR, '30.08.2016', 104))
-INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) VALUES(2, N'80-895-12', N'5435454343454354354534', 3, 2, 7, 2016, 2600, CONVERT(VARCHAR, '01.09.2016', 104))
-INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) VALUES(3, N'123456', N'0000000000', 1, 1, 8, 2016, 124.56, CONVERT(VARCHAR, '01.09.2016', 104))
-INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) VALUES(4, N'145', N'946546', 4, 2, 7, 2016, 56, CONVERT(VARCHAR, '20.08.2016', 104))
-INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) VALUES(5, N'АБ567', N'71018946546', 6, 4, 5, 2016, 500.45, CONVERT(VARCHAR, '20.08.2016', 104))
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) 
+  VALUES(1, N'1234-F56', N'71', 1, 1, 3, 2016, 164.4, CONVERT(VARCHAR, '30.08.2016', 104))
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt)
+  VALUES(2, N'80-895-12', N'5435454343454354354534', 3, 2, 7, 2016, 2600, CONVERT(VARCHAR, '01.09.2016', 104))
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) 
+  VALUES(3, N'123456', N'0000000000', 1, 1, 8, 2016, 124.56, CONVERT(VARCHAR, '01.09.2016', 104))
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) 
+  VALUES(4, N'145', N'946546', 4, 2, 7, 2016, 56, CONVERT(VARCHAR, '20.08.2016', 104))
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, CreatedAt) 
+  VALUES(5, N'АБ567', N'71018946546', 6, 4, 5, 2016, 500.45, CONVERT(VARCHAR, '20.08.2016', 104))
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, PaymentSum, PaymentDate, CreatedAt) 
+  VALUES(6, N'871010219034/1608', N'871010219034', 6, 5, 8, 2016, 72.00, 72.00, CONVERT(VARCHAR, '12.09.2016', 104), CONVERT(VARCHAR, '12.09.2016', 104))
+
 GO
 SET IDENTITY_INSERT [dbo].[Invoices] OFF
 GO
