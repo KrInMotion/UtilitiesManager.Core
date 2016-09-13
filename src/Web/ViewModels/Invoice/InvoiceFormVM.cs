@@ -34,16 +34,15 @@ namespace Web.ViewModels.Invoice
         public double Sum { get; set; }
         [Display(Name = "Сумма задолженности")]
         [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
-        public double? Debt { get; set; }
+        public decimal Debt { get; set; }
         [Display(Name = "Пеня")]
         [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
-        public double? Penalty { get; set; }
+        public decimal Penalty { get; set; }
         [Display(Name = "Сумма оплаты")]
         [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
         public double? PaymentSum { get; set; }
-        [Display(Name = "Сумма оплаты"), DataType(DataType.Text)]
+        [Display(Name = "Дата оплаты")]
         public DateTime? PaymentDate { get; set; }
-
         public List<SelectListItem> KindList { get; set; }
         public List<SelectListItem> ProviderList { get; set; }
         public List<SelectListItem> MonthList { get; set; }

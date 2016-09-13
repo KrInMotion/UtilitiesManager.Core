@@ -17,10 +17,10 @@ namespace Web.Data.Entities
         public int MonthId { get; set; }
         public virtual Month Month { get; set; }
         public int Year { get; set; }
-        public double Sum { get; set; }
-        public double? Debt { get; set; }
-        public double? Penalty { get; set; }
-        public double? PaymentSum { get; set; }
+        public decimal Sum { get; set; }
+        public decimal Debt { get; set; }
+        public decimal Penalty { get; set; }
+        public decimal? PaymentSum { get; set; }
         public DateTime? PaymentDate { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

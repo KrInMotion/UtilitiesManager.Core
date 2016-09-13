@@ -16,6 +16,8 @@ using Newtonsoft.Json.Serialization;
 using AutoMapper;
 using Web.ViewModels.Provider;
 using Web.ViewModels;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace Web
 {

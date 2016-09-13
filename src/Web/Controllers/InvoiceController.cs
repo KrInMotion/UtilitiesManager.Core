@@ -71,7 +71,7 @@ namespace Web.Controllers
                 var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
                 _invoiceRepository.Create(entity);
                 _invoiceRepository.Commit();
-                RedirectToAction("Index");
+                RedirectToAction("Index", "Home");
             }
             return View(model);
         }
