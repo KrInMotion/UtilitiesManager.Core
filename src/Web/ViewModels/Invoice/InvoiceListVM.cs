@@ -17,9 +17,13 @@ namespace Web.ViewModels.Invoice
         public string ProviderName { get; set; }
         [Display(Name = "За период")]
         public string InvoiceDate { get; set; }
-        [Display(Name = "Сумма к оплате")]
-        public double Sum { get; set; }
-        [Display(Name = "Оплачено")]
-        public double? PaymentSum { get; set; }
+        [Display(Name = "Сумма к оплате"), DataType(DataType.Currency)]
+        public decimal Sum { get; set; }
+        [Display(Name = "Оплачено"), DataType(DataType.Currency)]
+        public decimal? PaymentSum { get; set; }
+        [Display(Name = "Дата оплаты")]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString ="{0:d}")]
+        public DateTime? PaymentDate { get; set; }
+        public string RowStyle { get; set; }
     }
 }

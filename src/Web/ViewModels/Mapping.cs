@@ -20,9 +20,10 @@ namespace Web.ViewModels
                 config.CreateMap<Web.Data.Entities.Provider, ProviderVM>();
                 //Invoice
                 config.CreateMap<Web.Data.Entities.Invoice, InvoiceListVM>()
-                    .ForMember(dest=>dest.KindName, opt=>opt.MapFrom(src=>src.Kind.KindName))
+                    .ForMember(dest => dest.KindName, opt=>opt.MapFrom(src=>src.Kind.KindName))
                     .ForMember(dest => dest.ProviderName, opt => opt.MapFrom(src => src.Provider.ProviderName))
-                    .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"));
+                    .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"))
+                    .ForMember(dest=>dest.RowStyle, opt => opt.MapFrom(src => (src.PaymentSum != 0) ? "success": string.Empty));
                 config.CreateMap<InvoiceFormVM, Web.Data.Entities.Invoice>()
                     .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.Now));
             });
