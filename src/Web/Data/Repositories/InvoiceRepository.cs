@@ -14,6 +14,7 @@ namespace Web.Data.Repositories
 
         bool Commit();
         void Create(Invoice entity);
+        Invoice GetById(int id);
     }
 
     public class InvoiceRepository : IInvoiceRepository
@@ -34,6 +35,11 @@ namespace Web.Data.Repositories
         {
             _context.Invoices.Add(entity);
             }
+
+        public Invoice GetById(int id)
+        {
+            return _context.Invoices.SingleOrDefault(x => x.Id == id);
+        }
 
         public IEnumerable<Invoice> GetAll()
         {

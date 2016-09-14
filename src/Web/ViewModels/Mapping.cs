@@ -24,8 +24,8 @@ namespace Web.ViewModels
                     .ForMember(dest => dest.ProviderName, opt => opt.MapFrom(src => src.Provider.ProviderName))
                     .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"))
                     .ForMember(dest=>dest.RowStyle, opt => opt.MapFrom(src => (src.PaymentSum != 0) ? "success": string.Empty));
-                config.CreateMap<InvoiceFormVM, Web.Data.Entities.Invoice>()
-                    .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.Now));
+                config.CreateMap<InvoiceFormVM, Web.Data.Entities.Invoice>();
+                config.CreateMap<Web.Data.Entities.Invoice, InvoiceFormVM>();
             });
         }
     }

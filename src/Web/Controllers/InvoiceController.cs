@@ -69,6 +69,36 @@ namespace Web.Controllers
             if(ModelState.IsValid)
             {
                 var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
+                entity.CreatedAt = DateTime.Now;
+                _invoiceRepository.Create(entity);
+                _invoiceRepository.Commit();
+                RedirectToAction("Index", "Home");
+            }
+            return View(model);
+        }
+
+        //GET: /Invoice/Copy/Id
+        [HttpGet]
+        public IActionResult Copy(int id)
+        {
+            var entity = _invoiceRepository.GetById(id);
+            if (entity == null)
+                return BadRequest();
+            var model = Mapper.Map<Invoice, InvoiceFormVM>(entity);
+            model.Id = 0;
+            PrepareInvoiceModel(model);
+
+            return View(model);
+        }
+
+        //POST: /Invoice/Copy
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Copy(InvoiceFormVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
+                entity.UpdatedAt = DateTime.Now;
                 _invoiceRepository.Create(entity);
                 _invoiceRepository.Commit();
                 RedirectToAction("Index", "Home");

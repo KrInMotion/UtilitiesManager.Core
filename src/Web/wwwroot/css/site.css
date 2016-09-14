@@ -1,11 +1,57 @@
 ﻿body {
 }
+
+.table .btn{
+    box-shadow: none;
+    border-radius: 0;
+}
+
 /*Text Colors
 ------------------------------------*/
-.color-red { color: #e74c3c;}
+.color-red {
+    color: #e74c3c;
+}
 
 .input-sshort {
     max-width: 30%;
-}.input-xshort {
+}
+
+.input-xshort {
     max-width: 10%;
+}
+
+/*Panels
+------------------------------------*/
+.panel-heading {
+	color: #fff;
+	padding: 5px 15px;
+}
+
+.panel .table {
+    margin-bottom: 0;
+}
+.panel-light-green {
+	border-color: #72c02c;
+}
+
+.panel-light-green > .panel-heading {
+	background: #72c02c;
+}
+
+.panel-blue {
+	border-color: #3498db;
+}
+
+.panel-blue > .panel-heading {
+	background: #3498db;
+}
+
+/*Dividers
+------------------------------------*/
+.hr-line-dashed {
+    border-top: 1px dashed #e7eaec;
+    color:#fff;
+    background-color:#fff;
+    height: 1px;
+    margin: 20px 0;
 }
