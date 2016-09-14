@@ -15,10 +15,10 @@ namespace Web.ViewModels.Invoice
             ProviderList = new List<SelectListItem>();
             MonthList = new List<SelectListItem>();
         }
-        public int Id { get; set; }
-        [Display(Name ="Номер документа")]
+        public int DocumentId { get; set; }
+        [Display(Name ="Номер документа"), StringLength(256, ErrorMessage = "Размер строки не более 256 символов")]
         public string Number { get; set; }
-        [Display(Name = "Лицевой счет"), MaxLength(100)]
+        [Display(Name = "Лицевой счет"), StringLength(256, ErrorMessage ="Размер строки не более 256 символов")]
         public string Account { get; set; }
         [Display(Name = "Тип документа"), Required(ErrorMessage = "{0} - обязательное поле")]
         public int KindId { get; set; }
@@ -43,6 +43,10 @@ namespace Web.ViewModels.Invoice
         public double? PaymentSum { get; set; }
         [Display(Name = "Дата оплаты")]
         public DateTime? PaymentDate { get; set; }
+        [Display(Name = "Примечание"), DataType(DataType.MultilineText)]
+        [StringLength(10, ErrorMessage ="Размер сообщения не более 4000 символов")]
+        public string Note { get; set; }
+
         public List<SelectListItem> KindList { get; set; }
         public List<SelectListItem> ProviderList { get; set; }
         public List<SelectListItem> MonthList { get; set; }

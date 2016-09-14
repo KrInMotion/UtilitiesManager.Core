@@ -6,6 +6,10 @@
     border-radius: 0;
 }
 
+textarea.noresize {
+    resize: vertical;
+}
+
 /*Text Colors
 ------------------------------------*/
 .color-red {

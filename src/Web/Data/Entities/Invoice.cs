@@ -22,6 +22,7 @@ namespace Web.Data.Entities
         public decimal Penalty { get; set; }
         public decimal? PaymentSum { get; set; }
         public DateTime? PaymentDate { get; set; }
+        public string Note { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }

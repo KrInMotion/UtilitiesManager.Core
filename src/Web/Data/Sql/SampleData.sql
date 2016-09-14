@@ -53,8 +53,8 @@ SET IDENTITY_INSERT [dbo].[Invoices] ON
 GO
 INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
   VALUES(1, N'1234-F56', N'71', 1, 1, 3, 2016, 164.4, 0, 0, 0, NULL,  CONVERT(VARCHAR, '30.08.2016', 104))
-INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt)
-  VALUES(2, N'80-895-12', N'5435454343454354354534', 3, 2, 7, 2016, 2600, 10.10, 0, 0, NULL, CONVERT(VARCHAR, '01.09.2016', 104))
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, Note, CreatedAt)
+  VALUES(2, N'80-895-12', N'5435454343454354354534', 3, 2, 7, 2016, 2600, 10.10, 0, 0, NULL, N'Олатить до 20 числа след. месяца. Показания до 23', CONVERT(VARCHAR, '01.09.2016', 104))
 INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
   VALUES(3, N'123456', N'0000000000', 1, 1, 8, 2016, 124.56, 1000, 50.8, 0, NULL, CONVERT(VARCHAR, '01.09.2016', 104))
 INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 

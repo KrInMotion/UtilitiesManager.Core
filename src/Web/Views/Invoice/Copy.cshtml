@@ -1,11 +1,11 @@
 ﻿@model Web.ViewModels.Invoice.InvoiceFormVM
 @{
-    ViewBag.Title = "Новый документ";
+    ViewBag.Title = "Копирование документа";
 }
 <div class="container">
     <ol class="breadcrumb">
         <li><a asp-controller="Home" asp-action="Index">Главная</a></li>
-        <li class="active">Новый документ</li>
+        <li class="active">Создание копии</li>
     </ol>
     <div class="panel panel-blue">
         <div class="panel-heading">
@@ -14,7 +14,7 @@
             </h3>
         </div>
         <div class="panel-body">
-            <form asp-controller="Invoice" asp-action="Create" method="post" role="form" class="form-horizontal">
+            <form asp-controller="Invoice" asp-action="Copy" method="post" role="form" class="form-horizontal">
                 <input asp-for="DocumentId" type="hidden" />
                 <fieldset>
                     <div asp-validation-summary="ModelOnly"></div>
@@ -102,7 +102,7 @@
                     <div class="form-group">
                         <label asp-for="Note" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
-                            <textarea asp-for="Note" class="form-control noresize" rows="4"></textarea>
+                            <textarea asp-for="Note" class="form-control" rows="4"></textarea>
                             <span asp-validation-for="Note" class="text-danger"></span>
                         </div>
                     </div>

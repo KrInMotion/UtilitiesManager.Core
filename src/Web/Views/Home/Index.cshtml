@@ -5,78 +5,81 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="page-header">
-                <div class='btn-toolbar pull-right'>
-                    <div class='btn-group'>
-                        <a asp-controller="Invoice" asp-action="Create" class='btn btn-primary' title="Добавить новую квитанцию">Добавить</a>
-                    </div>
+            <div class="panel panel-blue">
+                <div class="panel-body">
+                    <a asp-controller="Invoice" asp-action="Create" class='btn btn-primary' title="Добавить новую квитанцию">Добавить</a>
                 </div>
-                <h3>Последние квитанции</h3>
             </div>
-            @if (Model.Any())
-            {
-                <div class="panel panel-blue">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <i class="fa fa-tasks"></i>
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>@Html.DisplayNameFor(x => x.KindName)</th>
-                                    <th>@Html.DisplayNameFor(x => x.ProviderName)</th>
-                                    <th>@Html.DisplayNameFor(x => x.InvoiceDate)</th>
-                                    <th>@Html.DisplayNameFor(x => x.Sum)</th>
-                                    <th>@Html.DisplayNameFor(x => x.PaymentSum)</th>
-                                    <th>@Html.DisplayNameFor(x => x.PaymentDate)</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr class="@item.RowStyle">
-                                        <td class="text-center">
-                                            <a class="btn btn-primary btn-xs" asp-controller="Invoice" asp-action="Detail" asp-route-id="@item.Id" title="Детальная информация о документе">
-                                                <i class="fa fa-info"></i>
-                                            </a>
-                                        </td>
-                                        <td><a asp-controller="Invoice" asp-action="Detail" asp-route-id="@item.Id">@item.KindName</a></td>
-                                        <td>@item.ProviderName</td>
-                                        <td>@item.InvoiceDate</td>
-                                        <td>@Html.DisplayFor(x => item.Sum)</td>
-                                        <td>@Html.DisplayFor(x => item.PaymentSum)</td>
-                                        <td>@Html.DisplayFor(x => item.PaymentDate)</td>
-                                        <td class="text-center">
-                                            <a class="btn btn-danger btn-xs" asp-controller="Invoice" asp-action="Delete" asp-route-id="@item.Id" title="Удалить документ">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-xs" asp-controller="Invoice" asp-action="Edit" asp-route-id="@item.Id" title="Изменить документ">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                            <a class="btn btn-success btn-xs" asp-controller="Invoice" asp-action="Copy" asp-route-id="@item.Id" title="Скопировать документ">
-                                                <i class="fa fa-copy"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <div class="text-center">
-                        <strong>Ура. Счетов нет!</strong>
-                    </div>
-                </div>
-            }
         </div>
     </div>
+@if (Model.Any())
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-blue">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="fa fa-tasks"></i>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="hidden-xs">@Html.DisplayNameFor(x => x.Number)</th>
+                                <th>@Html.DisplayNameFor(x => x.KindName)</th>
+                                <th>@Html.DisplayNameFor(x => x.ProviderName)</th>
+                                <th>@Html.DisplayNameFor(x => x.InvoiceDate)</th>
+                                <th>@Html.DisplayNameFor(x => x.Sum)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="@item.RowStyle">
+                                    <td class="text-center">
+                                        <a class="btn btn-primary btn-xs" asp-controller="Invoice" asp-action="Detail" asp-route-id="@item.Id" title="Детальная информация о документе">
+                                            <i class="fa fa-info"></i>
+                                        </a>
+                                    </td>
+                                    <td class="hidden-xs">@item.Number</td>
+                                    <td>@item.KindName</td>
+                                    <td>@item.ProviderName</td>
+                                    <td>@item.InvoiceDate</td>
+                                    <td>@Html.DisplayFor(x => item.Sum)</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-danger btn-xs" asp-controller="Invoice" asp-action="Delete" asp-route-id="@item.Id" title="Удалить документ">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                        <a class="btn btn-warning btn-xs" asp-controller="Invoice" asp-action="Edit" asp-route-id="@item.Id" title="Изменить документ">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-success btn-xs" asp-controller="Invoice" asp-action="Copy" asp-route-id="@item.Id" title="Скопировать документ">
+                                            <i class="fa fa-copy"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="text-center">
+                    <strong>Ура. Счетов нет!</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 </div>

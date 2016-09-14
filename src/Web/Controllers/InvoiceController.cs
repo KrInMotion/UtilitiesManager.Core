@@ -72,7 +72,7 @@ namespace Web.Controllers
                 entity.CreatedAt = DateTime.Now;
                 _invoiceRepository.Create(entity);
                 _invoiceRepository.Commit();
-                RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
             }
             return View(model);
         }
@@ -85,9 +85,7 @@ namespace Web.Controllers
             if (entity == null)
                 return BadRequest();
             var model = Mapper.Map<Invoice, InvoiceFormVM>(entity);
-            model.Id = 0;
             PrepareInvoiceModel(model);
-
             return View(model);
         }
 
@@ -98,10 +96,10 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
-                entity.UpdatedAt = DateTime.Now;
+                entity.CreatedAt = DateTime.Now;
                 _invoiceRepository.Create(entity);
                 _invoiceRepository.Commit();
-                RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
             }
             return View(model);
         }
