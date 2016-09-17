@@ -63,6 +63,8 @@ INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, 
   VALUES(5, N'АБ567', N'71018946546', 6, 4, 5, 2016, 500.45, 0, 0, 0, NULL, CONVERT(VARCHAR, '20.08.2016', 104))
 INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
   VALUES(6, N'871010219034/1608', N'871010219034', 6, 5, 8, 2016, 72.00, 0, 0, 72.00, CONVERT(VARCHAR, '12.09.2016', 104), CONVERT(VARCHAR, '12.09.2016', 104))
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
+  VALUES(7, null, N'99010602071', 3, 6, 8, 2016, 469.94, 0, 0, 469.94, CONVERT(VARCHAR, '17.09.2016', 104), CONVERT(VARCHAR, '17.09.2016', 104))
 GO
 SET IDENTITY_INSERT [dbo].[Invoices] OFF
 GO
