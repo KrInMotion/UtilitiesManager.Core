@@ -2,6 +2,14 @@
 @{
     ViewBag.Title = "Новый документ";
 }
+@section Styles{
+    <environment names="Development">
+        <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    </environment>
+}
 <div class="container">
     <ol class="breadcrumb">
         <li><a asp-controller="Home" asp-action="Index">Главная</a></li>
@@ -80,7 +88,7 @@
                     <div class="form-group">
                         <label asp-for="PaymentDate" class="col-sm-3 control-label"></label>
                         <div class="col-sm-9">
-                            <input asp-for="PaymentDate" class="form-control input-sshort" />
+                            <input asp-for="PaymentDate" class="form-control input-sshort datepicker" />
                             <span asp-validation-for="PaymentDate" class="text-danger"></span>
                         </div>
                     </div>
@@ -122,5 +130,15 @@
     @{
         Html.RenderPartial("_ValidationScripts");
     }
-
+<script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min.js"></script>
+<script>
+            $(document).ready(function () {
+                $('.datepicker').datepicker({
+                    language: "ru",
+                    todayHighlight: true,
+                    todayBtn: "linked"
+                });
+            });
+</script>
 }

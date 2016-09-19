@@ -42,7 +42,7 @@ INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(2, N'Квитанция за д�
 INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(3, N'Квитанция за электроэнергию')
 INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(4, N'Квитанция за коммунальные услуги')
 INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(5, N'Квитанция за кап. ремонт')
-INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(6, N'Квитанция за телефон')
+INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(6, N'Квитанция за стационарный телефон')
 INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(7, N'Счет за интернет')
 INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(8, N'Счет за телевидение')
 INSERT INTO [dbo].[Kinds] (Id, KindName) VALUES(9, N'Счет за мобильную связь')
