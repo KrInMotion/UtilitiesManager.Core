@@ -14,7 +14,9 @@ namespace Web.Data.Repositories
 
         bool Commit();
         void Create(Invoice entity);
-        Invoice GetById(int id);
+        Invoice GetById(int id, bool includeDependencies=false);
+        Invoice GetByIdNoTrack(int id, bool includeDependencies = false);
+        void Delete(Invoice entity);
     }
 
     public class InvoiceRepository : IInvoiceRepository
@@ -34,11 +36,40 @@ namespace Web.Data.Repositories
         public void Create(Invoice entity)
         {
             _context.Invoices.Add(entity);
-            }
+        }
 
-        public Invoice GetById(int id)
+        public Invoice GetById(int id, bool includeDependencies = false)
         {
-            return _context.Invoices.SingleOrDefault(x => x.Id == id);
+            if (includeDependencies)
+            {
+                return _context.Invoices
+                    .Include(x=>x.Kind)
+                    .Include(x=>x.Month)
+                    .Include(x=>x.Provider)
+                    .SingleOrDefault(x => x.Id == id);
+            }
+            else
+            {
+                return _context.Invoices.SingleOrDefault(x => x.Id == id);
+            }
+        }
+        public Invoice GetByIdNoTrack(int id, bool includeDependencies = false)
+        {
+            if (includeDependencies)
+            {
+                return _context.Invoices
+                    .AsNoTracking()
+                    .Include(x => x.Kind)
+                    .Include(x => x.Month)
+                    .Include(x => x.Provider)
+                    .SingleOrDefault(x => x.Id == id);
+            }
+            else
+            {
+                return _context.Invoices
+                    .AsNoTracking()
+                    .SingleOrDefault(x => x.Id == id);
+            }
         }
 
         public IEnumerable<Invoice> GetAll()
@@ -58,6 +89,11 @@ namespace Web.Data.Repositories
                 .Include(x=>x.Provider)
                 .OrderBy(x => x.CreatedAt)
                 .Take(20);
+        }
+
+        public void Delete(Invoice entity)
+        {
+            _context.Invoices.Remove(entity);
         }
     }
 }

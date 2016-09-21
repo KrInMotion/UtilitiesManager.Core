@@ -1,0 +1,59 @@
+﻿@model Web.ViewModels.Invoice.InvoiceDetailVM
+@{
+    ViewBag.Title = "Удаление документа";
+}
+
+<div class="container">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Главная</a></li>
+            <li class="active">Удаление документа</li>
+        </ol>
+    </div>
+    <div class="row">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <div class="text-center">
+                    <strong>@ViewBag.ErrorMessage</strong>
+                </div>
+            </div>
+        }
+        <div class="col-md-6 col-lg-offset-3 col-sm-6 col-sm-offset-3">
+            <div class="panel panel-blue">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Удалить указанный документ?
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <p class="text-center">
+                        <dl class="dl-horizontal">
+                            @if (!string.IsNullOrEmpty(Model.Number))
+                            {
+                                <dt>@Html.DisplayNameFor(x => x.Number)</dt>
+                                <dd>@Model.Number</dd>
+                            }
+                            <dt>@Html.DisplayNameFor(x => x.KindName)</dt>
+                            <dd>@Model.KindName</dd>
+                            <dt>@Html.DisplayNameFor(x => x.ProviderName)</dt>
+                            <dd>@Model.ProviderName</dd>
+                            <dt>@Html.DisplayNameFor(x => x.InvoiceDate)</dt>
+                            <dd>@Html.DisplayFor(x=>x.InvoiceDate)</dd>
+                            <dt>@Html.DisplayNameFor(x => x.Sum)</dt>
+                            <dd>@Html.DisplayFor(x => x.Sum)</dd>
+                        </dl>
+                    </p>
+                </div>
+                <div class="panel-footer">
+                    <form asp-controller="Invoice" asp-action="Delete" method="post" role="form">
+                        <input type="hidden" name="Id" value="@Model.Id" id="Id" />
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Удалить</button>
+                        <button type="button" class="btn btn-success pull-right" onclick="history.go(-1);"><i class="fa fa-crosshairs"></i> Отмена</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

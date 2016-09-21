@@ -18,14 +18,21 @@ namespace Web.ViewModels
                 //InvoiceProvider
                 config.CreateMap<ProviderVM, Web.Data.Entities.Provider>();
                 config.CreateMap<Web.Data.Entities.Provider, ProviderVM>();
-                //Invoice
+                //Invoice -> InvoiceListVM
                 config.CreateMap<Web.Data.Entities.Invoice, InvoiceListVM>()
                     .ForMember(dest => dest.KindName, opt=>opt.MapFrom(src=>src.Kind.KindName))
                     .ForMember(dest => dest.ProviderName, opt => opt.MapFrom(src => src.Provider.ProviderName))
                     .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"))
                     .ForMember(dest => dest.RowStyle, opt => opt.MapFrom(src => (src.PaymentSum != 0) ? "success": string.Empty));
+                //InvoiceFormVM -> Invoice
                 config.CreateMap<InvoiceFormVM, Web.Data.Entities.Invoice>();
+                //Invoice -> InvoiceFormVM
                 config.CreateMap<Web.Data.Entities.Invoice, InvoiceFormVM>();
+                //Invoice -> InvoiceDetailVM
+                config.CreateMap<Web.Data.Entities.Invoice, InvoiceDetailVM>()
+                    .ForMember(dest => dest.KindName, opt => opt.MapFrom(src => src.Kind.KindName))
+                    .ForMember(dest => dest.ProviderName, opt => opt.MapFrom(src => src.Provider.ProviderName))
+                    .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"));
             });
         }
     }

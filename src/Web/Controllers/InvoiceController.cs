@@ -103,5 +103,39 @@ namespace Web.Controllers
             }
             return View(model);
         }
+
+        //GET: /Invoice/Delete/Id
+        [HttpGet]
+        public IActionResult Delete(int id, string errorMessage)
+        {
+            var entity = _invoiceRepository.GetByIdNoTrack(id, true);
+            if (entity == null)
+                return NotFound();
+            var model = Mapper.Map<Invoice, InvoiceDetailVM>(entity);
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                ViewBag.ErrorMessage = $"К сожалению возникла ошибка: {errorMessage}";
+            }
+            return View(model);
+        }
+
+        //POST: /Invoice/Delete/Id
+        [HttpPost, ValidateAntiForgeryToken, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var entity = _invoiceRepository.GetByIdNoTrack(id, includeDependencies: false);
+            if (entity == null)
+                return NotFound();
+            try
+            {
+                _invoiceRepository.Delete(entity);
+                _invoiceRepository.Commit();
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Delete", new { id = id, errorMessage = ex.Message });
+            }
+        }
     }
 }
