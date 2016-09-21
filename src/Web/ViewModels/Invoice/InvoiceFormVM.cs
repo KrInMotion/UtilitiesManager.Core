@@ -31,7 +31,7 @@ namespace Web.ViewModels.Invoice
         public int Year { get; set; }
         [Display(Name = "Сумма к оплате"), Required(ErrorMessage = "{0} - обязательное поле")]
         [DataType(DataType.Currency, ErrorMessage ="Значение должно быть числом")]
-        public double Sum { get; set; }
+        public decimal Sum { get; set; }
         [Display(Name = "Сумма задолженности")]
         [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
         public decimal Debt { get; set; }
@@ -40,7 +40,7 @@ namespace Web.ViewModels.Invoice
         public decimal Penalty { get; set; }
         [Display(Name = "Сумма оплаты")]
         [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
-        public double? PaymentSum { get; set; }
+        public decimal? PaymentSum { get; set; }
         [Display(Name = "Дата оплаты")]
         public DateTime? PaymentDate { get; set; }
         [Display(Name = "Примечание"), DataType(DataType.MultilineText)]

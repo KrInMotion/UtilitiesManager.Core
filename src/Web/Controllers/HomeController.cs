@@ -19,8 +19,13 @@ namespace Web.Controllers
         }
 
         // GET:/Home/Index
-        public IActionResult Index()
+        public IActionResult Index(string statusMessage)
         {
+            if (!string.IsNullOrEmpty(statusMessage))
+            {
+                ViewBag.StatusMessage = statusMessage;
+            }
+
             var entity = _invoiceRepository.GetLastInvoces();
             var model = Mapper.Map<IEnumerable<Invoice>, IEnumerable<InvoiceListVM>>(entity);
             return View(model);

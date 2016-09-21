@@ -130,7 +130,7 @@ namespace Web.Controllers
             {
                 _invoiceRepository.Delete(entity);
                 _invoiceRepository.Commit();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", new { statusMessage = "Документ успешно удален" });
             }
             catch (Exception ex)
             {
