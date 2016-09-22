@@ -73,11 +73,18 @@ span.label {
 .table thead > tr > th {
     border-bottom: none;
 }
-
 .search-table {
-
 }
-
+.search-table td {
+    vertical-align: middle !important;
+}
+.search-table .td-buttons {
+    width: 9%;
+}
 .search-table td span {
     display: block;
+}
+.search-table td h4 {
+    font-size: 16px;
+    margin: 0 0 2px 0;
 }
