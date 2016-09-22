@@ -8,9 +8,10 @@ using Web.Data;
 namespace Web.Migrations
 {
     [DbContext(typeof(UtilitiesDbContext))]
-    partial class UtilitiesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160922094114_V6")]
+    partial class V6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

@@ -23,7 +23,8 @@ namespace Web.ViewModels
                     .ForMember(dest => dest.KindName, opt=>opt.MapFrom(src=>src.Kind.KindName))
                     .ForMember(dest => dest.ProviderName, opt => opt.MapFrom(src => src.Provider.ProviderName))
                     .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"))
-                    .ForMember(dest => dest.RowStyle, opt => opt.MapFrom(src => (src.PaymentSum != 0) ? "success": string.Empty));
+                    .ForMember(dest => dest.RowStyle, opt => opt.MapFrom(src => SetRowColor(src.Sum, src.PaymentSum, src.Debt, src.Penalty)))
+                    .ForMember(dest => dest.Finance, opt => opt.MapFrom(src => CalcFinance(src.Sum, src.PaymentSum, src. Debt, src.Penalty)));
                 //InvoiceFormVM -> Invoice
                 config.CreateMap<InvoiceFormVM, Web.Data.Entities.Invoice>();
                 //Invoice -> InvoiceFormVM
@@ -34,6 +35,23 @@ namespace Web.ViewModels
                     .ForMember(dest => dest.ProviderName, opt => opt.MapFrom(src => src.Provider.ProviderName))
                     .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"));
             });
+        }
+
+        private static string SetRowColor(decimal sum, decimal paymentSum, decimal debt, decimal penalty)
+        {
+            if (sum == paymentSum && debt==0 && penalty==0 )
+            {
+                return "success";
+            }
+            if (debt > 0) return "danger";
+            if (penalty > 0) return "warning";
+
+            return "info";
+        }
+
+        private static string CalcFinance(decimal sum, decimal paymentSum, decimal debt, decimal penalty)
+        {
+            return $"{sum.ToString()}/{paymentSum.ToString()}/{debt}/{penalty}";
         }
     }
 }

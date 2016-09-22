@@ -49,47 +49,51 @@
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th class="hidden-xs">@Html.DisplayNameFor(x => x.Number)</th>
-                                    <th>@Html.DisplayNameFor(x => x.KindName)</th>
-                                    <th>@Html.DisplayNameFor(x => x.ProviderName)</th>
-                                    <th>@Html.DisplayNameFor(x => x.InvoiceDate)</th>
-                                    <th>@Html.DisplayNameFor(x => x.Sum)</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr @Html.Raw(string.IsNullOrEmpty(item.RowStyle) ? "" : $"class=\"{item.RowStyle}\"")>
-                                        <td class="text-center">
-                                            <a class="btn btn-primary btn-xs" asp-controller="Invoice" asp-action="Detail" asp-route-id="@item.Id" title="Детальная информация о документе">
-                                                <i class="fa fa-info"></i>
-                                            </a>
-                                        </td>
-                                        <td class="hidden-xs">@item.Number</td>
-                                        <td>@item.KindName</td>
-                                        <td>@item.ProviderName</td>
-                                        <td>@item.InvoiceDate</td>
-                                        <td>@Html.DisplayFor(x => item.Sum)</td>
-                                        <td class="text-center">
-                                            <a class="btn btn-danger btn-xs" asp-controller="Invoice" asp-action="Delete" asp-route-id="@item.Id" title="Удалить документ">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-xs" asp-controller="Invoice" asp-action="Edit" asp-route-id="@item.Id" title="Изменить документ">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                            <a class="btn btn-success btn-xs" asp-controller="Invoice" asp-action="Copy" asp-route-id="@item.Id" title="Скопировать документ">
-                                                <i class="fa fa-copy"></i>
-                                            </a>
-                                        </td>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped search-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th class="hidden-xs">@Html.DisplayNameFor(x => x.Number)</th>
+                                        <th>@Html.DisplayNameFor(x => x.KindName)</th>
+                                        <th>@Html.DisplayNameFor(x => x.ProviderName)</th>
+                                        <th>@Html.DisplayNameFor(x => x.InvoiceDate)</th>
+                                        <th>@Html.DisplayNameFor(x => x.Finance)</th>
+                                        <th></th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="text-center">
+                                                <a class="btn btn-primary btn-xs" asp-controller="Invoice" asp-action="Detail" asp-route-id="@item.Id" title="Детальная информация о документе">
+                                                    <i class="fa fa-info"></i>
+                                                </a>
+                                            </td>
+                                            <td class="hidden-xs">@item.Number</td>
+                                            <td>@item.KindName</td>
+                                            <td>@item.ProviderName</td>
+                                            <td>@item.InvoiceDate</td>
+                                            <td>
+                                                <span class="label label-@item.RowStyle">@Html.DisplayFor(x => item.Finance)</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <a class="btn btn-danger btn-xs" asp-controller="Invoice" asp-action="Delete" asp-route-id="@item.Id" title="Удалить документ">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                                <a class="btn btn-warning btn-xs" asp-controller="Invoice" asp-action="Edit" asp-route-id="@item.Id" title="Изменить документ">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a class="btn btn-success btn-xs" asp-controller="Invoice" asp-action="Copy" asp-route-id="@item.Id" title="Скопировать документ">
+                                                    <i class="fa fa-copy"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

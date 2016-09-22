@@ -55,6 +55,7 @@ namespace Web.Controllers
         public IActionResult Create()
         {
             var model = new InvoiceFormVM();
+            model.Number = "Без номера";
             model.MonthId = DateTime.Now.Month;
             model.Year = DateTime.Now.Year;
             PrepareInvoiceModel(model);
@@ -72,7 +73,7 @@ namespace Web.Controllers
                 entity.CreatedAt = DateTime.Now;
                 _invoiceRepository.Create(entity);
                 _invoiceRepository.Commit();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", new { statusMessage = "Документ успешно создан" });
             }
             return View(model);
         }
@@ -81,12 +82,12 @@ namespace Web.Controllers
         [HttpGet]
         public IActionResult Copy(int id)
         {
-            var entity = _invoiceRepository.GetById(id);
+            var entity = _invoiceRepository.GetByIdNoTrack(id);
             if (entity == null)
                 return BadRequest();
             var model = Mapper.Map<Invoice, InvoiceFormVM>(entity);
             PrepareInvoiceModel(model);
-            return View(model);
+            return View("create", model);
         }
 
         //POST: /Invoice/Copy

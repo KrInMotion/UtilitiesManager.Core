@@ -40,11 +40,11 @@ namespace Web.ViewModels.Invoice
         public decimal Penalty { get; set; }
         [Display(Name = "Сумма оплаты")]
         [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
-        public decimal? PaymentSum { get; set; }
+        public decimal PaymentSum { get; set; }
         [Display(Name = "Дата оплаты")]
         public DateTime? PaymentDate { get; set; }
         [Display(Name = "Примечание"), DataType(DataType.MultilineText)]
-        [StringLength(10, ErrorMessage ="Размер сообщения не более 4000 символов")]
+        [StringLength(4000, ErrorMessage ="Размер сообщения не более 4000 символов")]
         public string Note { get; set; }
 
         public List<SelectListItem> KindList { get; set; }
