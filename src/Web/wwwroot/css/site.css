@@ -88,3 +88,6 @@ span.label {
     font-size: 16px;
     margin: 0 0 2px 0;
 }
+.search-table td small {
+    font-style: italic;
+}

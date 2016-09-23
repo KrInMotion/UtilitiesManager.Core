@@ -41,7 +41,7 @@ namespace Web.ViewModels.Invoice
         [Display(Name = "Сумма оплаты")]
         [DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
         public decimal PaymentSum { get; set; }
-        [Display(Name = "Дата оплаты")]
+        [Display(Name = "Дата оплаты"), DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode =true)]
         public DateTime? PaymentDate { get; set; }
         [Display(Name = "Примечание"), DataType(DataType.MultilineText)]
         [StringLength(4000, ErrorMessage ="Размер сообщения не более 4000 символов")]

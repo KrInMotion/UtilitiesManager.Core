@@ -59,7 +59,6 @@ namespace Web.Controllers
             model.MonthId = DateTime.Now.Month;
             model.Year = DateTime.Now.Year;
             PrepareInvoiceModel(model);
-
             return View(model);
         }
 
@@ -67,6 +66,8 @@ namespace Web.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create(InvoiceFormVM model)
         {
+            if(model.PaymentSum!=0 && model.PaymentDate==null)
+                ModelState.AddModelError("", "Указана сумма оплаты, но не указана дата оплаты!");
             if(ModelState.IsValid)
             {
                 var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
@@ -75,6 +76,7 @@ namespace Web.Controllers
                 _invoiceRepository.Commit();
                 return RedirectToAction("Index", "Home", new { statusMessage = "Документ успешно создан" });
             }
+            PrepareInvoiceModel(model);
             return View(model);
         }
 
