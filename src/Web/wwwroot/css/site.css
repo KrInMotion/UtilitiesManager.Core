@@ -1,13 +1,22 @@
 ﻿body {
+    font-size:13px;
 }
 
 .table .btn{
     box-shadow: none;
     border-radius: 0;
 }
-
 textarea.noresize {
     resize: vertical;
+}
+
+/*Input size
+------------------------------------*/
+.input-sshort {
+    max-width: 30%;
+}
+.input-xshort {
+    max-width: 10%;
 }
 
 /*Text Colors
@@ -15,13 +24,14 @@ textarea.noresize {
 .color-red {
     color: #e74c3c;
 }
-
-.input-sshort {
-    max-width: 30%;
+.color-blue {
+    color: #3498db;
 }
 
-.input-xshort {
-    max-width: 10%;
+/*Background Colors
+------------------------------------*/
+.bg-color-blue {
+    background-color: #3498db;
 }
 
 /*Panels
@@ -75,6 +85,9 @@ span.label {
 }
 .search-table {
 }
+.search-table th {
+    font-size: 13px;
+}
 .search-table td {
     vertical-align: middle !important;
 }
@@ -89,5 +102,22 @@ span.label {
     margin: 0 0 2px 0;
 }
 .search-table td small {
+    color: #999;
     font-style: italic;
+}
+
+/*Buttons
+------------------------------------*/
+.btn-noborder {
+    background: none;
+    color: #555;
+}
+.btn-blue {
+    font-size: 14px;
+    border-color: #3498db;
+}
+
+.btn-blue:hover{
+    color: #3498db;
+    border-color: #3498db;
 }

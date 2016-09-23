@@ -28,7 +28,8 @@ namespace Web.ViewModels
                 //InvoiceFormVM -> Invoice
                 config.CreateMap<InvoiceFormVM, Web.Data.Entities.Invoice>();
                 //Invoice -> InvoiceFormVM
-                config.CreateMap<Web.Data.Entities.Invoice, InvoiceFormVM>();
+                config.CreateMap<Web.Data.Entities.Invoice, InvoiceFormVM>()
+                    .ForMember(dest => dest.DocumentId, opt => opt.MapFrom(src => src.Id));
                 //Invoice -> InvoiceDetailVM
                 config.CreateMap<Web.Data.Entities.Invoice, InvoiceDetailVM>()
                     .ForMember(dest => dest.KindName, opt => opt.MapFrom(src => src.Kind.KindName))

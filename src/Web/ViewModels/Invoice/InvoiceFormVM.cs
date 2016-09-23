@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -46,6 +47,7 @@ namespace Web.ViewModels.Invoice
         [Display(Name = "Примечание"), DataType(DataType.MultilineText)]
         [StringLength(4000, ErrorMessage ="Размер сообщения не более 4000 символов")]
         public string Note { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public List<SelectListItem> KindList { get; set; }
         public List<SelectListItem> ProviderList { get; set; }

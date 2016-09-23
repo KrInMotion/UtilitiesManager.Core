@@ -17,6 +17,7 @@ namespace Web.Data.Repositories
         Invoice GetById(int id, bool includeDependencies=false);
         Invoice GetByIdNoTrack(int id, bool includeDependencies = false);
         void Delete(Invoice entity);
+        void Update(Invoice entity);
     }
 
     public class InvoiceRepository : IInvoiceRepository
@@ -94,6 +95,12 @@ namespace Web.Data.Repositories
         public void Delete(Invoice entity)
         {
             _context.Invoices.Remove(entity);
+        }
+
+        public void Update(Invoice entity)
+        {
+            _context.Invoices.Attach(entity);
+            _context.Entry<Invoice>(entity).State = EntityState.Modified;
         }
     }
 }

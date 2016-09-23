@@ -1,6 +1,6 @@
 ﻿@model Web.ViewModels.Invoice.InvoiceFormVM
 @{
-    ViewBag.Title = "Новый документ";
+    ViewBag.Title = "Редактирование документа";
 }
 @section Styles{
     <environment names="Development">
@@ -13,16 +13,16 @@
 <div class="container">
     <ol class="breadcrumb">
         <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Главная</a></li>
-        <li class="active">Новый документ</li>
+        <li class="active">Редактирование</li>
     </ol>
     <div class="panel panel-blue">
         <div class="panel-heading">
             <h3 class="panel-title">
-                <i class="fa fa-file"></i>
+                <i class="fa fa-pencil"></i>
             </h3>
         </div>
         <div class="panel-body">
-            <form asp-controller="Invoice" asp-action="Create" method="post" role="form" class="form-horizontal">
+            <form asp-controller="Invoice" asp-action="Edit" method="post" role="form" class="form-horizontal">
                 @Html.Partial("_InvoiceFields", Model);
                 <hr />
                 <div class="form-group">

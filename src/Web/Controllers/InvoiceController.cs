@@ -80,6 +80,39 @@ namespace Web.Controllers
             return View(model);
         }
 
+        //GET: /Invoice/Edit/Id
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var entity = _invoiceRepository.GetByIdNoTrack(id);
+            if (entity == null)
+                return NotFound();
+            var model = Mapper.Map<Invoice, InvoiceFormVM>(entity);
+            PrepareInvoiceModel(model);
+            return View(model);
+        }
+
+        //POST: /Invoice/Edit
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Edit(InvoiceFormVM model)
+        {
+            if (_invoiceRepository.GetByIdNoTrack(model.DocumentId, true) == null)
+                return NotFound();
+            if (model.PaymentSum != 0 && model.PaymentDate == null)
+                ModelState.AddModelError("", "Указана сумма оплаты, но не указана дата оплаты!");
+            if (ModelState.IsValid)
+            {
+                var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
+                entity.Id = model.DocumentId;
+                entity.UpdatedAt = DateTime.Now;
+                _invoiceRepository.Update(entity);
+                _invoiceRepository.Commit();
+                return RedirectToAction("Index", "Home", new { statusMessage = "Документ отредактирован" });
+            }
+            PrepareInvoiceModel(model);
+            return View(model);
+        }
+
         //GET: /Invoice/Copy/Id
         [HttpGet]
         public IActionResult Copy(int id)
@@ -90,21 +123,6 @@ namespace Web.Controllers
             var model = Mapper.Map<Invoice, InvoiceFormVM>(entity);
             PrepareInvoiceModel(model);
             return View("create", model);
-        }
-
-        //POST: /Invoice/Copy
-        [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Copy(InvoiceFormVM model)
-        {
-            if (ModelState.IsValid)
-            {
-                var entity = Mapper.Map<InvoiceFormVM, Invoice>(model);
-                entity.CreatedAt = DateTime.Now;
-                _invoiceRepository.Create(entity);
-                _invoiceRepository.Commit();
-                return RedirectToAction("Index", "Home");
-            }
-            return View(model);
         }
 
         //GET: /Invoice/Delete/Id

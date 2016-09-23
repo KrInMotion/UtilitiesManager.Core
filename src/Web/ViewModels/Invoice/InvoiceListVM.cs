@@ -25,7 +25,7 @@ namespace Web.ViewModels.Invoice
         [DataType(DataType.Date), DisplayFormat(DataFormatString ="{0:d}")]
         public DateTime? PaymentDate { get; set; }
         public string RowStyle { get; set; }
-        [Display(Name = "Нач-но/Опл-но/Долг/Пени")]
+        [Display(Name = "Нач-но/Опл-но")]
         public string Finance { get; set; }
     }
 }

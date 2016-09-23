@@ -28,7 +28,6 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <p class="text-center">
                         <dl class="dl-horizontal">
                             @if (!string.IsNullOrEmpty(Model.Number))
                             {
@@ -43,8 +42,9 @@
                             <dd>@Html.DisplayFor(x=>x.InvoiceDate)</dd>
                             <dt>@Html.DisplayNameFor(x => x.Sum)</dt>
                             <dd>@Html.DisplayFor(x => x.Sum)</dd>
+                            <dt>@Html.DisplayNameFor(x => x.CreatedAt)</dt>
+                            <dd>@Html.DisplayFor(x => x.CreatedAt)</dd>
                         </dl>
-                    </p>
                 </div>
                 <div class="panel-footer">
                     <form asp-controller="Invoice" asp-action="Delete" method="post" role="form">
