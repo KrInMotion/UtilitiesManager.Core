@@ -121,3 +121,19 @@ span.label {
     color: #3498db;
     border-color: #3498db;
 }
+
+/*Detail block
+------------------------------------*/
+.detail h2 {
+    margin: 5px 0 5px 0;
+    font-size: 21px;
+}
+.detail span .map-marker {
+    font-size:18px;
+    color: #72c02c;
+    margin-right: 5px;
+
+}
+.detail hr {
+    margin: 10px 0 10px 0;
+}

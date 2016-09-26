@@ -1,0 +1,52 @@
+﻿@model Web.ViewModels.Invoice.InvoiceDetailVM
+@{
+    ViewBag.Title = "Просмотр документа";
+}
+
+<div class="container">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Главная</a></li>
+            <li class="active">Просмотр документа</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-blue">
+                <div class="panel-body">
+                    <div class="detail">
+                        <h2>
+                            <strong>@Model.KindName</strong>
+                        </h2>
+                        <span>
+                            <i class="fa fa-map-marker map-marker"></i>@Model.ProviderName
+                        </span>
+                        <hr />
+                        <ul class="list-inline">
+                            <li>
+                                <h2 class="price">
+                                    @Html.DisplayFor(x => x.Sum)
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Sum)</small>
+                                </h2>
+                            </li>
+                            <li>
+                                <h2 class="price">
+                                    @Html.DisplayFor(x => x.PaymentSum)
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.PaymentSum)</small>
+                                </h2>
+                            </li>
+                            <li>
+                                <h2 class="price">
+                                    @Html.DisplayFor(x => x.Debt)
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Debt)</small>
+                                </h2>
+                            </li>
+                        </ul>
+                        <hr />
+                        <dl></dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

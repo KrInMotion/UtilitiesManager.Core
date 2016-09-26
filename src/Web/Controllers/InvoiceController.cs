@@ -50,6 +50,16 @@ namespace Web.Controllers
             return View();
         }
 
+        //GET: /Invoice/Detail/id
+        public IActionResult Detail(int id)
+        {
+            var entity = _invoiceRepository.GetByIdNoTrack(id, includeDependencies: true);
+            if (entity == null)
+                return NotFound();
+            var model = Mapper.Map<Invoice, InvoiceDetailVM>(entity);
+            return View(model);
+        }
+
         //GET: /Invoice/Create
         [HttpGet]
         public IActionResult Create()

@@ -24,6 +24,10 @@ namespace Web.ViewModels.Invoice
         [Display(Name = "Дата оплаты")]
         [DataType(DataType.Date), DisplayFormat(DataFormatString ="{0:d}")]
         public DateTime? PaymentDate { get; set; }
+        [Display(Name = "Сумма задолженности"), DataType(DataType.Currency)]
+        public decimal Debt { get; set; }
+        [Display(Name = "Пеня"), DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
+        public decimal Penalty { get; set; }
         [Display(Name = "Дата создания")]
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime CreatedAt { get; set; }
