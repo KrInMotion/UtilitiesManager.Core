@@ -108,7 +108,7 @@ span.label {
 
 /*Buttons
 ------------------------------------*/
-.btn-noborder {
+.btn-no-bg {
     background: none;
     color: #555;
 }
@@ -121,19 +121,84 @@ span.label {
     color: #3498db;
     border-color: #3498db;
 }
+.btn-red {
+    font-size: 14px;
+    border-color: #e74c3c;
+}
+
+.btn-red:hover{
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-green {
+    font-size: 14px;
+    border-color: #72c02c;
+}
+
+.btn-green:hover{
+    color: #72c02c;
+    border-color: #72c02c;
+}
+.btn-yellow {
+    font-size: 14px;
+    border-color: #f39c12;
+}
+
+.btn-yellow:hover{
+    color: #f39c12;
+    border-color: #f39c12;
+}
 
 /*Detail block
 ------------------------------------*/
+.detail .panel-body {
+    padding: 15px 15px 5px 15px;
+}
 .detail h2 {
     margin: 5px 0 5px 0;
     font-size: 21px;
 }
-.detail span .map-marker {
+.detail .header span {
+    margin-right: 5px;
+}
+.detail .header span i {
     font-size:18px;
     color: #72c02c;
     margin-right: 5px;
-
 }
 .detail hr {
     margin: 10px 0 10px 0;
+}
+.detail .finance {
+    display: block;
+    padding: 5px 0;
+    margin: 5px 0 10px 0;
+    border-top: solid 1px #eee;
+    border-bottom: solid 1px #eee;
+}
+.detail .finance ul {
+    margin-bottom: 0;
+}
+.detail .finance ul li {
+    border-left: solid 1px #eee;
+}
+
+.detail .finance ul li:first-child {
+    border-left: none !important;
+}
+.detail .detail-hide {
+    margin: 5px 0;
+}
+.detail .dates {
+    display: block;
+    border-top: solid 1px #eee;
+    padding: 5px 0;
+    font-size: 12px;
+}
+.detail .dates ul {
+    margin-bottom: 0;
+}
+.detail .dates li i {
+    color:#777;
 }

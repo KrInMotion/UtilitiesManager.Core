@@ -11,6 +11,8 @@ namespace Web.ViewModels.Invoice
         public int Id { get; set; }
         [Display(Name ="№ квитанции")]
         public string Number { get; set; }
+        [Display(Name = "Лицевой счет")]
+        public string Account { get; set; }
         [Display(Name = "Тип квитанции")]
         public string KindName { get; set; }
         [Display(Name = "Поставщик")]
@@ -28,8 +30,11 @@ namespace Web.ViewModels.Invoice
         public decimal Debt { get; set; }
         [Display(Name = "Пеня"), DataType(DataType.Currency, ErrorMessage = "Значение должно быть числом")]
         public decimal Penalty { get; set; }
-        [Display(Name = "Дата создания")]
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:d}")]
+        [Display(Name = "Дата создания"), DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime CreatedAt { get; set; }
+        [Display(Name = "Дата изменения"), DisplayFormat(DataFormatString = "{0:d}")]
+        public DateTime? UpdatedAt { get; set; }
+        [Display(Name = "Примечание")]
+        public string Note { get; set; }
     }
 }

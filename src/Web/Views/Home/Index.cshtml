@@ -75,7 +75,7 @@
                                 {
                                     <tr>
                                         <td class="text-center">
-                                            <a class="btn btn-blue btn-noborder btn-xs" asp-controller="Invoice" asp-action="Detail" asp-route-id="@item.Id" title="Детальная информация о документе">
+                                            <a class="btn btn-blue btn-no-bg btn-xs" asp-controller="Invoice" asp-action="Detail" asp-route-id="@item.Id" title="Детальная информация о документе">
                                                 <i class="fa fa-info"></i>
                                             </a>
                                         </td>
@@ -89,13 +89,13 @@
                                             <span class="label label-@item.RowStyle">@Html.DisplayFor(x=>item.Sum) / @Html.DisplayFor(x => item.PaymentSum)</span>
                                         </td>
                                         <td class="text-center td-buttons">
-                                            <a class="btn btn-danger btn-xs" asp-controller="Invoice" asp-action="Delete" asp-route-id="@item.Id" title="Удалить документ">
+                                            <a class="btn btn-red btn-no-bg btn-xs" asp-controller="Invoice" asp-action="Delete" asp-route-id="@item.Id" title="Удалить документ">
                                                 <i class="fa fa-trash"></i>
                                             </a>
-                                            <a class="btn btn-warning btn-xs" asp-controller="Invoice" asp-action="Edit" asp-route-id="@item.Id" title="Изменить документ">
+                                            <a class="btn btn-green btn-no-bg btn-xs" asp-controller="Invoice" asp-action="Edit" asp-route-id="@item.Id" title="Изменить документ">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a class="btn btn-success btn-xs" asp-controller="Invoice" asp-action="Copy" asp-route-id="@item.Id" title="Скопировать документ">
+                                            <a class="btn btn-yellow btn-no-bg btn-xs" asp-controller="Invoice" asp-action="Copy" asp-route-id="@item.Id" title="Скопировать документ">
                                                 <i class="fa fa-copy"></i>
                                             </a>
                                         </td>

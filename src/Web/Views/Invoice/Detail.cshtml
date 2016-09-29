@@ -1,6 +1,12 @@
 ﻿@model Web.ViewModels.Invoice.InvoiceDetailVM
 @{
     ViewBag.Title = "Просмотр документа";
+    var detailHeader = Model.KindName;
+    if (!string.IsNullOrEmpty(Model.Number) && Model.Number.IndexOf("Без номера") < 0)
+    {
+        detailHeader += $" №: {Model.Number}";
+    }
+    detailHeader += $" за {Model.InvoiceDate}";
 }
 
 <div class="container">
@@ -11,41 +17,112 @@
         </ol>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-blue">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-blue detail">
                 <div class="panel-body">
-                    <div class="detail">
+                    <div class="header">
                         <h2>
-                            <strong>@Model.KindName</strong>
+                            <strong>
+                                @detailHeader
+                            </strong>
                         </h2>
                         <span>
                             <i class="fa fa-map-marker map-marker"></i>@Model.ProviderName
                         </span>
-                        <hr />
+                        <span>
+                            @if (!string.IsNullOrEmpty(Model.Account))
+                            {
+                                @:<i class="fa fa-user"></i> л/с: @Model.Account
+                            }
+                        </span>
+                    </div>
+                    <div class="finance">
                         <ul class="list-inline">
                             <li>
-                                <h2 class="price">
+                                <h2>
                                     @Html.DisplayFor(x => x.Sum)
-                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Sum)</small>
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Sum).ToLower()</small>
                                 </h2>
                             </li>
                             <li>
-                                <h2 class="price">
+                                <h2>
                                     @Html.DisplayFor(x => x.PaymentSum)
-                                    <small class="text-muted">@Html.DisplayNameFor(x => x.PaymentSum)</small>
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.PaymentSum).ToLower()</small>
+                                    @if(Model.PaymentDate!=null)
+                                    {
+                                        <small class="text-muted">@Html.DisplayFor(x => x.PaymentDate)</small>
+                                    }
                                 </h2>
                             </li>
                             <li>
-                                <h2 class="price">
+                                <h2>
                                     @Html.DisplayFor(x => x.Debt)
-                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Debt)</small>
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Debt).ToLower()</small>
+                                </h2>
+                            </li>
+                            <li>
+                                <h2>
+                                    @Html.DisplayFor(x => x.Penalty)
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Penalty).ToLower()</small>
                                 </h2>
                             </li>
                         </ul>
-                        <hr />
-                        <dl></dl>
+                    </div>
+                    <div class="detail-hide">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseDetail"
+                                aria-expanded="false" aria-controls="collapseDetail">
+                            Button with data-target
+                        </button>
+                        <div class="collapse" id="collapseDetail">
+                            <div class="well">
+                                <dl class="dl-horizontal">
+                                    <dt>@Html.DisplayNameFor(x => x.Note)</dt>
+                                    <dd>@Html.DisplayFor(x => x.Note)</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dates">
+                        <ul class="list-inline">
+                            <li title="@Html.DisplayNameFor(x => x.CreatedAt)">
+                                <i class="fa fa-calendar"></i> @Html.DisplayFor(x => x.CreatedAt)
+                            </li>
+                            @if (Model.UpdatedAt != null)
+                            {
+                                <li title="@Html.DisplayNameFor(x => x.UpdatedAt)">
+                                    <i class="fa fa-pencil"></i> @Html.DisplayFor(x => x.UpdatedAt)
+                                </li>
+                            }
+                        </ul>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-default" onclick="history.go(-1);"><i class="fa fa-arrow-circle-left"></i> Назад</button>
+                    <div class="pull-right">
+                        <a asp-controller="Invoice" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success"><i class="fa fa-edit"></i> Изменить</a>
+                        <button data-toggle="modal" data-target="#modal-delete" class="btn btn-danger"><i class="fa fa-trash"></i> Удалить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-delete" role="dialog" aria-labelledby="myModalDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Удаление документа</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center"><i class="fa fa-question-circle fa-2x"></i> Вы уверены, что хотите удалить данный документ?</p>
+            </div>
+            <div class="modal-footer">
+                <form asp-controller="Invoice" asp-action="Delete" method="post" role="form">
+                    <input type="hidden" name="Id" value="@Model.Id" id="Id" />
+                    <button type="submit" class="btn btn-danger pull-left"><i class="fa fa-trash"></i> Удалить</button>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal"><i class="fa fa-close"></i> Отмена</button>
+                </form>
             </div>
         </div>
     </div>
