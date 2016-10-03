@@ -155,7 +155,32 @@ span.label {
 .detail .panel-body {
     padding: 15px 15px 5px 15px;
 }
-.detail h2 {
+.detail dl {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.detail dl dd {
+    padding-bottom: 10px;
+}
+.detail dl i {
+    font-size:18px;
+    color: #3498db;
+    margin-right: 5px;
+}
+.detail dl ul {
+    margin-bottom: 0;
+}
+
+.detail dl ul li {
+    border-left: solid 1px #eee;
+}
+
+.detail dl ul li:first-child {
+    border-left: none !important;
+}
+
+/*.detail h2 {
     margin: 5px 0 5px 0;
     font-size: 21px;
 }
@@ -201,4 +226,4 @@ span.label {
 }
 .detail .dates li i {
     color:#777;
-}
+}*/

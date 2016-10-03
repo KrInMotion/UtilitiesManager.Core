@@ -20,82 +20,56 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-blue detail">
                 <div class="panel-body">
-                    <div class="header">
-                        <h2>
-                            <strong>
-                                @detailHeader
-                            </strong>
-                        </h2>
-                        <span>
-                            <i class="fa fa-map-marker map-marker"></i>@Model.ProviderName
-                        </span>
-                        <span>
-                            @if (!string.IsNullOrEmpty(Model.Account))
-                            {
-                                @:<i class="fa fa-user"></i> л/с: @Model.Account
-                            }
-                        </span>
-                    </div>
-                    <div class="finance">
-                        <ul class="list-inline">
-                            <li>
-                                <h2>
-                                    @Html.DisplayFor(x => x.Sum)
+                    <dl class="dl-horizontal">
+                        <dt>@Html.DisplayNameFor(x => x.KindName)</dt>
+                        <dd>@Html.DisplayFor(x => x.KindName)</dd>
+
+                        <dt>@Html.DisplayNameFor(x => x.ProviderName)</dt>
+                        <dd><i class="fa fa-map-marker"></i>@Html.DisplayFor(x => x.ProviderName)</dd>
+
+                        <dt>@Html.DisplayNameFor(x => x.InvoiceDate)</dt>
+                        <dd><i class="fa fa-calendar-check-o"></i>@Html.DisplayFor(x => x.InvoiceDate)</dd>
+
+                        <dt>@Html.DisplayNameFor(x => x.Number)</dt>
+                        <dd><i class="fa fa-check-square-o"></i>@Html.DisplayFor(x => x.Number)</dd>
+ 
+                        <dt>@Html.DisplayNameFor(x => x.Account)</dt>
+                        <dd><i class="fa fa-user"></i>@Html.DisplayFor(x => x.Account)</dd>
+
+                        <dt>Финансы</dt>
+                        <dd>
+                            <ul class="list-inline">
+                                <li>
+                                    <i class="fa fa-money"></i>
+                                    <strong>@Html.DisplayFor(x => x.Sum)</strong>
                                     <small class="text-muted">@Html.DisplayNameFor(x => x.Sum).ToLower()</small>
-                                </h2>
-                            </li>
-                            <li>
-                                <h2>
-                                    @Html.DisplayFor(x => x.PaymentSum)
+                                </li>
+                                <li>
+                                    <strong>@Html.DisplayFor(x => x.PaymentSum)</strong>
                                     <small class="text-muted">@Html.DisplayNameFor(x => x.PaymentSum).ToLower()</small>
-                                    @if(Model.PaymentDate!=null)
+                                    @if (Model.PaymentDate != null)
                                     {
                                         <small class="text-muted">@Html.DisplayFor(x => x.PaymentDate)</small>
                                     }
-                                </h2>
-                            </li>
-                            <li>
-                                <h2>
-                                    @Html.DisplayFor(x => x.Debt)
-                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Debt).ToLower()</small>
-                                </h2>
-                            </li>
-                            <li>
-                                <h2>
-                                    @Html.DisplayFor(x => x.Penalty)
-                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Penalty).ToLower()</small>
-                                </h2>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="detail-hide">
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseDetail"
-                                aria-expanded="false" aria-controls="collapseDetail">
-                            Button with data-target
-                        </button>
-                        <div class="collapse" id="collapseDetail">
-                            <div class="well">
-                                <dl class="dl-horizontal">
-                                    <dt>@Html.DisplayNameFor(x => x.Note)</dt>
-                                    <dd>@Html.DisplayFor(x => x.Note)</dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dates">
-                        <ul class="list-inline">
-                            <li title="@Html.DisplayNameFor(x => x.CreatedAt)">
-                                <i class="fa fa-calendar"></i> @Html.DisplayFor(x => x.CreatedAt)
-                            </li>
-                            @if (Model.UpdatedAt != null)
-                            {
-                                <li title="@Html.DisplayNameFor(x => x.UpdatedAt)">
-                                    <i class="fa fa-pencil"></i> @Html.DisplayFor(x => x.UpdatedAt)
                                 </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
+                                <li>
+                                    <strong>@Html.DisplayFor(x => x.Debt)</strong>
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Debt).ToLower()</small>
+                                </li>
+                                <li>
+                                    <strong>@Html.DisplayFor(x => x.Penalty)</strong>
+                                    <small class="text-muted">@Html.DisplayNameFor(x => x.Penalty).ToLower()</small>
+                                </li>
+                            </ul>
+                        </dd>
+                        <dt>@Html.DisplayNameFor(x => x.CreatedAt)</dt>
+                        <dd><i class="fa fa-calendar"></i>@Html.DisplayFor(x => x.CreatedAt)</dd>
+                        <dt>@Html.DisplayNameFor(x => x.UpdatedAt)</dt>
+                        <dd><i class="fa fa-edit"></i>@Html.DisplayFor(x => x.UpdatedAt)</dd>
+                        <dt>@Html.DisplayNameFor(x => x.Note)</dt>
+                        <dd><i class="fa fa-comment"></i>@Html.DisplayFor(x => x.Note)</dd>
+                    </dl>
+                 </div>
                 <div class="panel-footer">
                     <button type="button" class="btn btn-default" onclick="history.go(-1);"><i class="fa fa-arrow-circle-left"></i> Назад</button>
                     <div class="pull-right">
