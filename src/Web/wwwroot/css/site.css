@@ -150,6 +150,32 @@ span.label {
     border-color: #f39c12;
 }
 
+/*Alerts
+------------------------------------*/
+.alert 
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-left-width: 5px;
+    border-radius:0;
+}
+.alert-info {
+    border-color: #3498db;
+}
+.alert-danger {
+    border-color: #e74c3c;
+}
+
+.alert-warning {
+    border-color: #f1c40f;
+}
+.alert-success {
+    border-color: #72c02c;
+}
+
+.alert i.fa {
+    font-size: 16px;
+}
 /*Detail block
 ------------------------------------*/
 .detail .panel-body {

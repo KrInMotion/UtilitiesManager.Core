@@ -19,11 +19,11 @@ namespace Web.Controllers
         }
 
         // GET:/Home/Index
-        public IActionResult Index(string statusMessage)
+        public IActionResult Index(string successMessage)
         {
-            if (!string.IsNullOrEmpty(statusMessage))
+            if (!string.IsNullOrEmpty(successMessage))
             {
-                ViewBag.StatusMessage = statusMessage;
+                ViewBag.SuccessMessage = successMessage;
             }
 
             var entity = _invoiceRepository.GetLastInvoces();

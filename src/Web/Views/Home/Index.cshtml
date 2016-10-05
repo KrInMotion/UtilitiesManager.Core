@@ -5,29 +5,11 @@
 <div class="container">
     @if (ViewBag.ErrorMessage != null)
     {
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="alert alert-danger fade in alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <div class="text-center">
-                        <strong>@ViewBag.ErrorMessage</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <alert alert-type="success" dismissable="true" message="@ViewBag.ErrorMessage" icon="true" />
     }
-    @if (ViewBag.StatusMessage != null)
+    @if (ViewBag.SuccessMessage != null)
     {
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="alert alert-info fade in alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <div class="text-center">
-                        @ViewBag.StatusMessage
-                    </div>
-                </div>
-            </div>
-        </div>
+        <alert alert-type="success" dismissable="true" message="@ViewBag.SuccessMessage" icon="true" />
     }
     <div class="row">
         <div class="col-md-12">

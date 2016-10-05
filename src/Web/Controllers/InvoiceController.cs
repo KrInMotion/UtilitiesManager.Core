@@ -84,7 +84,7 @@ namespace Web.Controllers
                 entity.CreatedAt = DateTime.Now;
                 _invoiceRepository.Create(entity);
                 _invoiceRepository.Commit();
-                return RedirectToAction("Index", "Home", new { statusMessage = "Документ успешно создан" });
+                return RedirectToAction("Index", "Home", new { successMessage = "Документ успешно создан" });
             }
             PrepareInvoiceModel(model);
             return View(model);
@@ -117,7 +117,7 @@ namespace Web.Controllers
                 entity.UpdatedAt = DateTime.Now;
                 _invoiceRepository.Update(entity);
                 _invoiceRepository.Commit();
-                return RedirectToAction("Index", "Home", new { statusMessage = "Документ отредактирован" });
+                return RedirectToAction("Index", "Home", new { successMessage = "Документ отредактирован" });
             }
             PrepareInvoiceModel(model);
             return View(model);
@@ -161,7 +161,7 @@ namespace Web.Controllers
             {
                 _invoiceRepository.Delete(entity);
                 _invoiceRepository.Commit();
-                return RedirectToAction("Index", "Home", new { statusMessage = "Документ успешно удален" });
+                return RedirectToAction("Index", "Home", new { successMessage = "Документ успешно удален" });
             }
             catch (Exception ex)
             {
