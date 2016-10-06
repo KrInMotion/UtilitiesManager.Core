@@ -21,9 +21,9 @@ namespace Web.ViewModels.Invoice
         public decimal Sum { get; set; }
         [Display(Name = "Оплачено"), DataType(DataType.Currency)]
         public decimal? PaymentSum { get; set; }
-        [Display(Name = "Дата оплаты")]
+        [Display(Name = "Дата создания")]
         [DataType(DataType.Date), DisplayFormat(DataFormatString ="{0:d}")]
-        public DateTime? PaymentDate { get; set; }
+        public DateTime CreatedAt { get; set; }
         public string RowStyle { get; set; }
         [Display(Name = "Нач-но/Опл-но")]
         public string Finance { get; set; }

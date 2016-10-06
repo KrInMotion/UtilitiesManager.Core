@@ -5,7 +5,7 @@
 <div class="container">
     @if (ViewBag.ErrorMessage != null)
     {
-        <alert alert-type="success" dismissable="true" message="@ViewBag.ErrorMessage" icon="true" />
+        <alert alert-type="danger" dismissable="true" message="@ViewBag.ErrorMessage" icon="true" />
     }
     @if (ViewBag.SuccessMessage != null)
     {
@@ -19,12 +19,14 @@
                         <a asp-controller="Invoice" asp-action="Create" class='btn btn-primary' title="Добавить новую квитанцию">Добавить</a>
                     </div>
                     <div class="col-md-11">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Введите выражение для поиска..."/>
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
+                        <form asp-controller="Invoice" asp-action="Search" method="post" id="searchForm" role="form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchText" name="searchText" placeholder="Введите выражение для поиска..." />
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -41,7 +43,7 @@
                         </h3>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped search-table">
+                        <table class="table table-bordered table-striped table-condensed search-table">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -58,13 +60,14 @@
                                     <tr>
                                         <td class="text-center">
                                             <a class="btn btn-blue btn-no-bg btn-xs" asp-controller="Invoice" asp-action="Detail" asp-route-id="@item.Id" title="Детальная информация о документе">
-                                                <i class="fa fa-info"></i>
+                                                <i class="fa fa-info-circle"></i>
                                             </a>
                                         </td>
                                         <td>@item.Number</td>
                                         <td>
                                             <h4>@item.KindName</h4>
-                                            <small>@item.ProviderName</small>
+                                            <small><i class="fa fa-map-marker"></i> @item.ProviderName</small>
+                                            <small class="pull-right"><i class="fa fa-fw fa-calendar"></i>@Html.DisplayFor(x => item.CreatedAt)</small>
                                         </td>
                                         <td>@item.InvoiceDate</td>
                                         <td>
@@ -92,15 +95,6 @@
     }
     else
     {
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <div class="text-center">
-                        <strong>Ура. Счетов нет!</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <alert alert-type="warning" dismissable="true" message="Ура. Счетов нет!" icon="true" />
     }
 </div>
