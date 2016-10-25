@@ -136,6 +136,10 @@ span.label {
     border-color: #72c02c;
 }
 
+.btn-dark {
+    font-size: 14px;
+    border-color: #555;
+}
 .btn-green:hover{
     color: #72c02c;
     border-color: #72c02c;
