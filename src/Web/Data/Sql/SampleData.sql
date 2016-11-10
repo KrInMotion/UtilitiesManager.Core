@@ -77,6 +77,16 @@ INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, 
   VALUES(11, N'Без номера', N'8604001460312265800012', 10, 9, 8, 2016, 984.76, 0, 0, 0, NULL, '20160922')
 INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
   VALUES(12, N'Без номера', N'7100092510652', 5, 2, 9, 2016, 155.42, 0, -0.08, 155.42, '20160926', '20160926')
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
+  VALUES(13, N'Без номера', N'8604001460312265800012', 10, 9, 10, 2016, 1342.86, 0, 0, 1342.86, '20161109', '20161109')
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
+  VALUES(14, N'1665605', N'100048189', 2, 3, 10, 2016, 33.50, 0, 0, 33.50, '20161109', '20161109')
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
+  VALUES(15, N'16328', N'101053026', 1, 4, 10, 2016, 160.07, 0, 0, 160.07, '20161109', '20161109')
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
+  VALUES(16, N'Без номера', N'7100092510652', 5, 2, 10, 2016, 155.50, 0, 0, 155.50, '20161109', '20161109')
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
+  VALUES(17, N'Без номера', N'1014106328', 4, 1, 10, 2016, 2011.21, 0, 0, 2011.21, '20161109', '20161109')
 GO
 SET IDENTITY_INSERT [dbo].[Invoices] OFF
 GO
