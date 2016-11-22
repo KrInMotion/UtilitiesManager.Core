@@ -87,6 +87,8 @@ INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, 
   VALUES(16, N'Без номера', N'7100092510652', 5, 2, 10, 2016, 155.50, 0, 0, 155.50, '20161109', '20161109')
 INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
   VALUES(17, N'Без номера', N'1014106328', 4, 1, 10, 2016, 2011.21, 0, 0, 2011.21, '20161109', '20161109')
+INSERT INTO [dbo].[Invoices] (Id, Number, Account, KindId, ProviderId, MonthId, Year, Sum, Debt, Penalty, PaymentSum, PaymentDate, CreatedAt) 
+  VALUES(18, N'Без номера', N'99010602071', 3, 6, 10, 2016, 516.38, 0, 0, 516.38, '20161117', '20161117')
 GO
 SET IDENTITY_INSERT [dbo].[Invoices] OFF
 GO
