@@ -8,6 +8,9 @@ namespace Web.ViewModels.Invoice
 {
     public class InvoiceListVM
     {
+        public IEnumerable<InvoiceListItemVM> Invoices { get; set; }
+        public PagingInfo PagingInfo { get; set; }
+
         public int Id { get; set; }
         [Display(Name ="№ квитанции")]
         public string Number { get; set; }

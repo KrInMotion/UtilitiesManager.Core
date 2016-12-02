@@ -7,19 +7,21 @@ using Web.Data.Repositories;
 using Web.ViewModels.Invoice;
 using AutoMapper;
 using Web.Data.Entities;
+using Web.ViewModels;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IInvoiceRepository _invoiceRepository;
+        private int _pageSize = 5;
         public HomeController(IInvoiceRepository invoiceRepository)
         {
             _invoiceRepository = invoiceRepository;
         }
 
-        // GET:/Home/Index
-        public IActionResult Index(string successMessage)
+        // GET:/Home/Index/Page{page}
+        public IActionResult Index(string successMessage, int page = 1)
         {
             if (!string.IsNullOrEmpty(successMessage))
             {
@@ -27,7 +29,18 @@ namespace Web.Controllers
             }
 
             var entity = _invoiceRepository.GetLastInvoces();
-            var model = Mapper.Map<IEnumerable<Invoice>, IEnumerable<InvoiceListVM>>(entity);
+
+            var model = new InvoiceListVM
+            {
+                Invoices = Mapper.Map<IEnumerable<Invoice>, IEnumerable<InvoiceListItemVM>>(entity.Skip((page - 1) * _pageSize).Take(_pageSize)),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = _pageSize,
+                    TotalItems = entity.Count()
+                }
+            };
+                
             return View(model);
         }
         

@@ -25,6 +25,13 @@ namespace Web.ViewModels
                     .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"))
                     .ForMember(dest => dest.RowStyle, opt => opt.MapFrom(src => SetRowColor(src.Sum, src.PaymentSum, src.Debt, src.Penalty)))
                     .ForMember(dest => dest.Finance, opt => opt.MapFrom(src => CalcFinance(src.Sum, src.PaymentSum, src. Debt, src.Penalty)));
+                //Invoice -> InvoiceListItemVM
+                config.CreateMap<Web.Data.Entities.Invoice, InvoiceListItemVM>()
+                    .ForMember(dest => dest.KindName, opt => opt.MapFrom(src => src.Kind.KindName))
+                    .ForMember(dest => dest.ProviderName, opt => opt.MapFrom(src => src.Provider.ProviderName))
+                    .ForMember(dest => dest.InvoiceDate, opt => opt.MapFrom(src => $"{src.Month.MonthName} {src.Year.ToString()}"))
+                    .ForMember(dest => dest.RowStyle, opt => opt.MapFrom(src => SetRowColor(src.Sum, src.PaymentSum, src.Debt, src.Penalty)))
+                    .ForMember(dest => dest.Finance, opt => opt.MapFrom(src => CalcFinance(src.Sum, src.PaymentSum, src.Debt, src.Penalty)));
                 //InvoiceFormVM -> Invoice
                 config.CreateMap<InvoiceFormVM, Web.Data.Entities.Invoice>();
                 //Invoice -> InvoiceFormVM

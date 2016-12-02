@@ -88,8 +88,7 @@ namespace Web.Data.Repositories
                 .Include(x=>x.Month)
                 .Include(x=>x.Kind)
                 .Include(x=>x.Provider)
-                .OrderBy(x => x.CreatedAt)
-                .Take(20);
+                .OrderBy(x => x.CreatedAt);
         }
 
         public void Delete(Invoice entity)
